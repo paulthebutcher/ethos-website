@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guildry — ai·ethos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/projects" class="active">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <a href="/projects" class="back-link">← all projects</a>
+
+  <header>
+    <div class="project-header" style="margin-bottom: 16px;">
+      <h1 style="margin-bottom: 0;">Guildry</h1>
+      <span class="project-status on-hold">on hold</span>
+    </div>
+    <div class="project-meta">
+      <span>Started 06 Feb 2026</span>
+      <span>·</span>
+      <span><a href="https://guildry.theaiethos.com" style="font-size: 12px;">guildry.theaiethos.com</a></span>
+    </div>
+    <p class="page-intro">
+      Project intelligence for agencies. Scope, staff, deliver, and learn from every project — a system that gets smarter with each project you close.
+    </p>
+  </header>
+
+  <section class="article">
+
+    <h2>Thesis</h2>
+    <p>Services firms have years of project data but no way to learn from it. LLMs can now extract patterns from unstructured history and use them to improve future estimates, staffing decisions, and delivery quality.</p>
+
+    <h2>Architecture</h2>
+    <p>Seven interconnected modules covering the full services business lifecycle. Phase 1 shipped three core modules that form the inner learning loop:</p>
+
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="label">Blueprint</div>
+        <div class="value">Conversational project scoping with phase suggestions and hour estimates</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Bench</div>
+        <div class="value">Talent network management with skills tracking</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Retro</div>
+        <div class="value">Project retrospectives capturing lessons learned</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">+ 4 more</div>
+        <div class="value">Signal, Plinth, Relay, Folio (designed, not built)</div>
+      </div>
+    </div>
+
+    <h2>Signals</h2>
+    <ul>
+      <li>Phase 1 complete — Blueprint, Bench, Retro all working</li>
+      <li>Core loop functional: Scope → Staff → Deliver → Learn</li>
+      <li>Built in ~3 hours across 2 sessions — validates rapid development thesis</li>
+    </ul>
+
+    <h2>Technical Decisions</h2>
+    <p>Clerk auth, Supabase with RLS, Claude API integration. AI creates clients via natural language conversation. Pivoted from 17-PR waterfall to discovery-first approach — let AI conversations reveal what data structure needs to be.</p>
+
+    <p>Key learning: build guides can be overspecified. Target schema pattern flexible enough to evolve. Vertical slices (one feature end-to-end) work better than horizontal layers.</p>
+
+    <h2>Status</h2>
+    <p>On hold while focusing on the pre-build intelligence pipeline. Phase 1 is functional and deployed. Remaining 4 modules designed but not built. Would resume if a services firm expressed interest in piloting.</p>
+
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

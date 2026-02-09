@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launchpad — ai·ethos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/projects" class="active">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <a href="/projects" class="back-link">← all projects</a>
+
+  <header>
+    <div class="project-header" style="margin-bottom: 16px;">
+      <h1 style="margin-bottom: 0;">Launchpad</h1>
+      <span class="project-status on-hold">on hold</span>
+    </div>
+    <div class="project-meta">
+      <span>Started 08 Feb 2026</span>
+      <span>·</span>
+      <span><a href="https://launchpad.theaiethos.com" style="font-size: 12px;">launchpad.theaiethos.com</a></span>
+    </div>
+    <p class="page-intro">
+      Turn app ideas into prototypes in minutes. AI-powered rapid app scaffolding — describe your idea and Launchpad generates a complete prototype with landing page, auth, feedback widget, onboarding, and docs.
+    </p>
+  </header>
+
+  <section class="article">
+
+    <h2>Thesis</h2>
+    <p>Most app ideas die in planning. Launchpad removes friction by auto-generating infrastructure so you can validate faster. Ship in minutes, not months.</p>
+
+    <h2>What It Does</h2>
+    <p>Describe an app idea in natural language → AI generates a complete proposal (name, landing page copy, feature list, infrastructure config) → edit in a tabbed proposal UI → hit build → streaming real-time progress as each component deploys.</p>
+
+    <p>Each app gets its own subdomain via wildcard routing. Auto-configures: Clerk auth, feedback widgets, onboarding flows, and documentation.</p>
+
+    <h2>Signals</h2>
+    <ul>
+      <li>AI generates proposals from natural language descriptions</li>
+      <li>Editable proposal UI: customize name, branding, features before build</li>
+      <li>Streaming build progress with real-time SSE status updates</li>
+      <li>Wildcard subdomain routing: each app gets its own URL</li>
+    </ul>
+
+    <h2>Technical Decisions</h2>
+    <p>Dark theme UI to differentiate from Guildry. Each app gets its own CSS file to prevent style bleeding. <code>clerkMiddleware()</code> wrapper for all routes with subdomain routing in Next.js middleware. Fixed global CSS backgrounds overriding nested layouts.</p>
+
+    <h2>Status</h2>
+    <p>On hold. UI fully built and deployed. Architecture cleanup complete. Would resume as internal tooling for the incubator — each weekly build could be scaffolded through Launchpad.</p>
+
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

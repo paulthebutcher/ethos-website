@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-build Intelligence Pipeline — ai·ethos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/projects" class="active">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <a href="/projects" class="back-link">← all projects</a>
+
+  <header>
+    <div class="project-header" style="margin-bottom: 16px;">
+      <h1 style="margin-bottom: 0;">Pre-build Intelligence Pipeline</h1>
+      <span class="project-status active">active</span>
+    </div>
+    <div class="project-meta">
+      <span>Started 09 Feb 2026</span>
+      <span>·</span>
+      <span>wk 06</span>
+    </div>
+    <p class="page-intro">
+      Bad planning specs — not bad coding — are the bottleneck in AI-assisted product development. This pipeline takes a raw idea, stress-tests it against evidence, identifies the hard parts, and outputs build-ready artifacts that make Claude+Cursor produce good code on the first pass.
+    </p>
+  </header>
+
+  <section class="article">
+
+    <h2>Origin</h2>
+
+    <p>After 5+ weekly builds with mixed results, the pattern became clear: builds fail when Claude+Cursor receives ambiguous scope, unidentified technical risks, missing decision context, or no evaluation criteria. The quality of input determines the quality of output. This project exists to fix the input.</p>
+
+    <p>Originally conceived as an "evidence-scoring layer" sitting on top of Perplexity and Claude Research APIs — a meta-layer that would aggregate multiple AI research engines and cross-reference their outputs into an evidence graph with confidence scoring. Pivoted on 09 Feb 2026 after research showed the evidence layer alone has a thin moat (commodity APIs, published decomposition techniques) and the real value is in the full pipeline from idea to spec.</p>
+
+    <h2>The Five Steps</h2>
+
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="label">Step 1</div>
+        <div class="value">Evidence Gathering</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Step 2</div>
+        <div class="value">Idea Stress Test</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Step 3</div>
+        <div class="value">Scope Decision</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Step 4</div>
+        <div class="value">Risk Identification</div>
+      </div>
+    </div>
+    <div class="detail-grid" style="grid-template-columns: 1fr;">
+      <div class="detail-item">
+        <div class="label">Step 5</div>
+        <div class="value">Spec Generation → SCOPE.md, DATA_MODEL.md, BUILD_PLAN.md, .cursorrules</div>
+      </div>
+    </div>
+
+    <p><strong>Step 1: Evidence Gathering</strong> — Research engines (Perplexity, Claude Research), Reddit/HN scraping, competitor landing page analysis. Produces structured evidence with source attribution.</p>
+
+    <p><strong>Step 2: Idea Stress Test</strong> — What's strong, what's weak, most common failure reason for ideas like this. Produces a revised thesis with explicit assumptions.</p>
+
+    <p><strong>Step 3: Scope Decision</strong> — Minimum bet that tests the core assumption. One persona, one workflow, one session. Produces SCOPE.md.</p>
+
+    <p><strong>Step 4: Risk Identification</strong> — The technical hard part, the "if this doesn't work nothing else matters" component. Produces build sequence ordered by risk, not by feature.</p>
+
+    <p><strong>Step 5: Spec Generation</strong> — Actual planning artifacts in the format build tools need: <code>SCOPE.md</code>, <code>DATA_MODEL.md</code>, <code>BUILD_PLAN.md</code>, <code>.cursorrules</code>.</p>
+
+    <h2>Three Intelligence Layers</h2>
+
+    <p>These are what research engines don't provide — the gap between "here's information about your topic" and "here's what you need to know to build this week."</p>
+
+    <h3>Layer 1: Problem Signal Validation</h3>
+
+    <p>Unstructured problem signals from Reddit, HN, Product Hunt, indie hacker forums, app store reviews. Not "63% of freelancers struggle" from a report, but actual quotes from real people. Pattern extraction across 50+ comments: recurring complaints, words people use, what they've tried and abandoned.</p>
+
+    <h3>Layer 2: Competitive Teardown</h3>
+
+    <p>What specific design decisions did competitors make? Not a feature comparison table but a decision audit: what they bet on, what they left out, what pricing tells you about the real customer.</p>
+
+    <h3>Layer 3: Build Specification</h3>
+
+    <p>The actual artifacts that make Claude+Cursor produce good code on the first pass. SCOPE.md needs: one workflow, target persona, in/out/why, core bet. DATA_MODEL.md needs: entities implied by workflow. BUILD_PLAN.md needs: hard parts identified and sequenced first. <code>.cursorrules</code> needs: technology decisions with rationale.</p>
+
+    <h2>Defensibility</h2>
+
+    <p>The accumulated pattern library is the real moat. 20 weeks of builds = 20 complete examples of idea → evidence → spec → build → outcome. This becomes a training set for the pipeline itself. Each build makes the next build's planning better.</p>
+
+    <p>Value prop is measurable: "ship better MVPs faster." Competition is a generic blank Claude conversation, which is a weak opponent for structured planning.</p>
+
+    <h2>Competitive Landscape</h2>
+
+    <p>Nobody has built exactly this — a meta-layer that aggregates multiple AI research engines and cross-references their outputs into actionable build plans. But a lot of people have built adjacent things, and the lessons from their work are directly applicable.</p>
+
+    <h3>Elicit</h3>
+    <p>Academic systematic review workflows. Data extraction accuracy of 94-99%. Supports all AI-generated claims with sentence-level citations. Focused exclusively on academic papers, not general web research. <strong>Lesson:</strong> sentence-level source attribution isn't a nice-to-have, it's the core trust mechanism. If your claim extraction step doesn't preserve the exact passage that supports each claim, the confidence scoring downstream is meaningless.</p>
+
+    <h3>Scite</h3>
+    <p>Citation context analysis. 1.4B+ citations indexed. Classifies citations as supporting or contrasting, helping users evaluate reliability based on how a paper is cited by others. <strong>Lesson:</strong> the supporting/contradicting/neutral classification is well-proven and users find it valuable, but it only works when you have enough data points. With fewer engines, classification needs to be high-quality to compensate.</p>
+
+    <h3>Consensus</h3>
+    <p>Identifies areas of scientific agreement or disagreement and summarizes them in simple language. Answers "what does the evidence say about X" with a confidence-weighted answer. <strong>Lesson:</strong> users want a clear bottom-line answer with the ability to drill into the evidence, not the evidence graph first. Lead with the synthesis, let them explore the claims underneath.</p>
+
+    <h3>RTI Health Solutions / Canada Drug Agency</h3>
+    <p>Found that AI tools risk giving users a "false sense of confidence" and that human oversight remains crucial. More comfortable using AI for extraction of key study characteristics than for extraction of endpoint data — meaning structured factual claims extract well, but nuanced analytical conclusions don't.</p>
+
+    <div class="callout">
+      <p><strong>Key gap:</strong> Nobody building the meta-layer that aggregates multiple AI research engines with cross-referenced evidence into build-ready specs. But sitting as a meta-layer on platforms that could absorb the differentiator is inherently vulnerable — which is why the pivot to full pipeline (idea → spec) matters more than the evidence layer alone.</p>
+    </div>
+
+    <h2>Technical Research: Claim Decomposition</h2>
+
+    <p>The evidence-gathering step requires decomposing research engine outputs into individual claims that can be cross-referenced. Academic research on this is extensive and the findings directly shape how the pipeline should work.</p>
+
+    <h3>Four Proven Approaches</h3>
+
+    <p><strong>FActScore</strong> (Min et al., 2023) — The original atomic fact decomposition framework. Uses 8 few-shot demonstrations. Decomposes long-form text into atomic facts and checks each against a knowledge source. Problem: too granular (7-word average claims), extracts trivial facts alongside meaningful ones. Available as an open-source package with Wikipedia as default knowledge base.</p>
+
+    <p><strong>VeriScore</strong> (Song et al., 2024) — Recommended starting point for this pipeline. Two key improvements over FActScore: first, it extracts only "verifiable claims" — statements that describe a single event or state accompanied by necessary semantic modifiers (temporal, spatial qualifiers) — rather than all atomic claims indiscriminately. Second, it uses a sliding window mechanism with <code>&lt;SOS&gt;</code> and <code>&lt;EOS&gt;</code> markers to preserve inter-sentence context during extraction, removing the need for expensive claim revision steps. Handles QA format automatically. Fine-tuned open-weight models available alongside API-based implementation.</p>
+
+    <p><strong>SAFE</strong> (Wei et al., 2024) — Google's two-pass approach: extract atomic claims, then decontextualize them (add context back so each claim is self-contained). More accurate than single-pass methods but doubles LLM cost. Good reference for understanding what "self-contained" means for claims.</p>
+
+    <p><strong>DecMetrics</strong> (2025) — Defines the quality metrics that matter for decomposition: <strong>high completeness</strong> (captures all facets of original text), <strong>high correctness</strong> (each claim is faithful to the source), <strong>high semantic entropy</strong> (claims are distinct, no redundant overlap). Proposes Claim2Atom benchmark aggregating FActScore and WICE datasets. Trains a lightweight decomposition model using these metrics as RL reward signals.</p>
+
+    <h3>Critical Findings from the Research</h3>
+
+    <p><strong>Atomicity matters more than expected.</strong> Researchers at Notre Dame found that optimal granularity for verification is atomicity level 1, not the most atomic level 0. Going too atomic means different engines phrase the same fact differently and you get no corroboration matches. Too coarse means multiple facts per claim and partial matches everywhere. Target: one meaningful assertion with necessary qualifiers.</p>
+
+    <p><strong>Decomposition can hurt if overdone.</strong> Increasing the number of sub-claims initially enhances performance, but additional noise eventually degrades results. The aggregation approach — demanding support for all atomic claims — can enhance precision but negatively impacts recall when non-essential claims are hard to verify.</p>
+
+    <p><strong>Granularity is the hardest design decision.</strong> Across all the research, this is the consistent finding. Recommendation: spend 70% of spike time tuning the decomposition prompt, not the scoring algorithm. If claims come out too coarse, corroboration detection won't work. Too fine, and you drown in trivial overlapping claims.</p>
+
+    <p><strong>Context loss during decomposition is a critical failure mode.</strong> In medical domain testing (MedScore), claims became "unverifiable" when decomposition stripped away conditions or context that made them meaningful. "This treatment works" extracted from "this treatment works for patients over 65 with mild symptoms" is a fundamentally different claim. The prompt needs to explicitly instruct the model to preserve qualifying context.</p>
+
+    <p><strong>Batching is a trap.</strong> At least one team initially attempted to process claims in batches of 50, but the LLM frequently truncated the JSON output. Process one research response at a time for decomposition. You can parallelize across engines, but don't batch claims within a single extraction call.</p>
+
+    <p><strong>Cross-source agreement is less common than you'd hope.</strong> Even when Scite, Elicit, and Consensus were trained on the same underlying data source (Semantic Scholar), the retrieved works were not largely overlapping. Scite found quite different papers compared to the other two. This is actually good news for cross-engine corroboration — different engines genuinely surface different evidence — but it means you should expect a lot of unique, uncorroborated claims and relatively few strong corroboration signals.</p>
+
+    <div class="callout">
+      <p><strong>The confidence model must handle single-source claims gracefully</strong> rather than treating uncorroborated claims as low-confidence by default. Most claims will be single-source. That's still valuable — the value is "here's what two independent research engines found, here's where they agree, here's what's only supported by one source."</p>
+    </div>
+
+    <p><strong>Claim type matters enormously.</strong> Extraction of discrete, factual claims works well (90%+ accuracy). Extraction of analytical or evaluative claims is much less reliable. For business idea validation, a lot of the interesting evidence is evaluative ("market X is growing," "customers hate Y"), not purely factual. The data model needs a <code>claim_category</code> field: factual vs. evaluative vs. predictive. Score them differently. Present them differently.</p>
+
+    <h3>Prompt Design Guidance</h3>
+
+    <p>Architecture should follow VeriScore-style sliding window adapted for business research. Process paragraph by paragraph, not sentence by sentence. Mark target paragraph with delimiters, include preceding paragraph as context.</p>
+
+    <p>The prompt must instruct the model to: (1) extract only verifiable claims, (2) preserve qualifying context, (3) include source URL if cited, (4) classify claim as factual/evaluative/predictive, (5) target one meaningful assertion per claim with enough context to be self-contained.</p>
+
+    <p>Few-shot examples are critical. Build 5-6 golden examples from actual Perplexity + Claude Research outputs on business topics. VeriScore GitHub (<code>github.com/Yixiao-Song/VeriScore</code>) contains prompt templates and few-shot examples as reference.</p>
+
+    <h2>Identified Blindspots</h2>
+
+    <p>Self-diagnosed risks with this approach — things that could make this fail even if execution is good.</p>
+
+    <h3>1. Unusually fast builder</h3>
+    <p>Chemical engineering background + full-stack skills = builds MVPs faster than most. A 30% time savings = half day for me, 4-5 days for typical indie hacker. My "is this worth it?" judgment may be miscalibrated because the cost of a bad plan is lower for me than for the target customer.</p>
+
+    <h3>2. Solving for build quality, customers solving for confidence</h3>
+    <p>I frame this as "better input yields better code." But many users aren't stuck on execution — they're stuck on commitment. They have 5 ideas and can't decide which to build. For them, the valuable output is conviction, not a spec. The pipeline might need to optimize for "should I build this at all?" before "how should I build this?"</p>
+
+    <h3>3. Wrong success metric</h3>
+    <p>Currently measuring "does the plan produce a better build" but the actual question is "does the plan produce a build closer to revenue." A planning tool should optimize for likelihood of revenue signal by Friday, not code quality. The tool should sometimes say "don't build this at all."</p>
+
+    <h3>4. Self-referential risk</h3>
+    <p>Building a tool whose primary user is me building that tool. Risk of over-fitting to my own workflow and confusing "improving the tool" with "improving the outcome." Hard rule: tool improvements only Mondays, based on last week's friction log. Tuesday-Friday is building the week's product, full stop.</p>
+
+    <h2>Implementation Plan</h2>
+
+    <h3>Phase 1: Manual Pipeline with Friction Logs (Weeks 1-2)</h3>
+
+    <p><strong>Monday morning:</strong> 2 hours structured research — Perplexity, Claude Research, Reddit/HN, competitor teardown. Force structured document with evidence for/against, problem signals with quotes, competitor decisions, identified gaps.</p>
+
+    <p><strong>Monday afternoon:</strong> Use document to produce planning artifacts (SCOPE.md, DATA_MODEL.md, BUILD_PLAN.md, .cursorrules). Write one-paragraph "core bet" statement first.</p>
+
+    <p><strong>Tuesday-Friday:</strong> Build with Cursor using artifacts. Keep friction log — every decision point Cursor couldn't handle, every rework from wrong/ambiguous spec, every "should have known this Monday."</p>
+
+    <p><strong>Friday EOD:</strong> Review friction log. Which planning failures could have been caught Monday?</p>
+
+    <h3>Phase 2: Automate Most Tedious Step (Weeks 3-4)</h3>
+
+    <p>The friction log after weeks 1-2 IS the product spec. Automate the most tedious valuable step — likely evidence gathering and structuring. Keep friction logging through this phase too.</p>
+
+    <h3>Phase 3: External Validation (Weeks 5-6)</h3>
+
+    <p>Have someone else try the process/tool. Attempt revenue signal.</p>
+
+    <h3>Hard Rules</h3>
+
+    <ul>
+      <li>Tool improvements only Mondays, based on last week's friction log</li>
+      <li>Tuesday-Friday is building the week's product, full stop</li>
+      <li>By week 6: either have something someone else can try, or shelve it</li>
+    </ul>
+
+    <h3>Kill Criteria</h3>
+
+    <ul>
+      <li>Each automated step must produce output at least as useful as the manual version. If not, automation is making builds worse, not better.</li>
+      <li>If structured planning doesn't measurably outperform an unstructured Claude conversation by week 4, the thesis is wrong.</li>
+    </ul>
+
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
