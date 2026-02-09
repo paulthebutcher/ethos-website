@@ -27,6 +27,8 @@
       <span class="project-status active">active</span>
     </div>
     <div class="project-meta">
+      <span>Build Program</span>
+      <span>·</span>
       <span>Started 09 Feb 2026</span>
       <span>·</span>
       <span>wk 06</span>
@@ -43,6 +45,34 @@
     <p>After 5+ weekly builds with mixed results, the pattern became clear: builds fail when Claude+Cursor receives ambiguous scope, unidentified technical risks, missing decision context, or no evaluation criteria. The quality of input determines the quality of output. This project exists to fix the input.</p>
 
     <p>Originally conceived as an "evidence-scoring layer" sitting on top of Perplexity and Claude Research APIs — a meta-layer that would aggregate multiple AI research engines and cross-reference their outputs into an evidence graph with confidence scoring. Pivoted on 09 Feb 2026 after research showed the evidence layer alone has a thin moat (commodity APIs, published decomposition techniques) and the real value is in the full pipeline from idea to spec.</p>
+
+    <h2>Weekly Experiments</h2>
+
+    <p>Each week tests a specific piece of the pipeline through an actual build. Friction logs from each week inform what needs automation.</p>
+
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="label">Week 1</div>
+        <div class="value">
+          <a href="/projects/reddit-problem-signal-miner" style="color: rgba(100, 100, 255, 0.9); text-decoration: none;">Reddit Problem Signal Miner</a>
+          <span style="display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px;">Tests Layer 1: Problem Signal Validation · Active</span>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Week 2</div>
+        <div class="value">
+          <span style="color: rgba(255,255,255,0.5);">TBD</span>
+          <span style="display: block; font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px;">Tests Layer 2: Competitive Teardown</span>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Week 3+</div>
+        <div class="value">
+          <span style="color: rgba(255,255,255,0.5);">Upcoming</span>
+          <span style="display: block; font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px;">Determined by friction log patterns</span>
+        </div>
+      </div>
+    </div>
 
     <h2>The Five Steps</h2>
 

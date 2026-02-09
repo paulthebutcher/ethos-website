@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reddit Problem Signal Miner — ai·ethos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .program-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(100, 100, 255, 0.1);
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    border-radius: 4px;
+    font-size: 13px;
+    color: rgba(100, 100, 255, 0.9);
+    margin-bottom: 16px;
+  }
+  .program-badge a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .program-badge a:hover {
+    text-decoration: underline;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin: 32px 0 24px 0;
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .tab:hover {
+    color: rgba(255,255,255,0.8);
+  }
+  .tab.active {
+    color: rgba(255,255,255,0.95);
+    border-bottom-color: rgba(100, 100, 255, 0.8);
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  .tab-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 15px;
+  }
+  .tab-content th,
+  .tab-content td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .tab-content th {
+    background: rgba(0,0,0,0.3);
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .friction-table {
+    margin: 24px 0;
+  }
+  .friction-table th {
+    font-size: 12px;
+  }
+  .friction-table td {
+    font-size: 14px;
+    vertical-align: top;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/projects" class="active">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <a href="/projects" class="back-link">← all projects</a>
+
+  <div class="program-badge">
+    Part of: <a href="/projects/pre-build-intelligence-pipeline">Pre-build Intelligence Pipeline</a>
+  </div>
+
+  <header>
+    <div class="project-header" style="margin-bottom: 16px;">
+      <h1 style="margin-bottom: 0;">Reddit Problem Signal Miner</h1>
+      <span class="project-status active">active</span>
+    </div>
+    <div class="project-meta">
+      <span>Week 1</span>
+      <span>·</span>
+      <span>Started 09 Feb 2026</span>
+      <span>·</span>
+      <span>Tests Layer 1: Problem Signal Validation</span>
+    </div>
+    <p class="page-intro">
+      Stop wasting 30 hours on Reddit—get structured problem signals from 5 startup communities, extracted and scored by AI. Tests whether automated problem signal extraction can match or beat manual Reddit research.
+    </p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('research')">Research</div>
+    <div class="tab" onclick="showTab('scope')">Scope</div>
+    <div class="tab" onclick="showTab('data-model')">Data Model</div>
+    <div class="tab" onclick="showTab('build-plan')">Build Plan</div>
+    <div class="tab" onclick="showTab('friction-log')">Friction Log</div>
+    <div class="tab" onclick="showTab('retro')">Retro</div>
+  </div>
+
+  <!-- OVERVIEW TAB -->
+  <div id="overview" class="tab-content active">
+    <section class="article">
+      <h2>Core Bet</h2>
+      <p>
+        Indie hackers building 3+ MVPs per year will use a Reddit problem signal miner (even with limited subreddit coverage) because manually browsing Reddit for 30-40 hours per validation cycle is painful and expensive, and pattern extraction quality is the unsolved moat.
+      </p>
+
+      <h2>What It Tests</h2>
+      <p>
+        <strong>Layer 1 of the Pre-build Intelligence Pipeline:</strong> Problem Signal Validation. Can we automate the extraction of real problem signals from Reddit at a quality level that matches or exceeds manual research?
+      </p>
+
+      <h2>Build Window</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <div class="label">Timeline</div>
+          <div class="value">Tuesday Feb 10 → Friday Feb 13, 2026</div>
+        </div>
+        <div class="detail-item">
+          <div class="label">Deploy Target</div>
+          <div class="value"><code>reddit-signals.theaiethos.com</code></div>
+        </div>
+      </div>
+
+      <h2>Success Criteria</h2>
+      <ol>
+        <li>A stranger can visit the URL and generate a pain point report with zero instructions</li>
+        <li>Extraction accuracy >60% (12+/20 extracted pain points should be legitimate, actionable)</li>
+        <li>Processing completes in <3 minutes from submit to full report display</li>
+        <li>We actually use it ourselves for next Monday's research</li>
+      </ol>
+
+      <h2>Stack</h2>
+      <ul>
+        <li>Next.js 15 (App Router)</li>
+        <li>TypeScript (strict mode)</li>
+        <li>No database (stateless, ephemeral reports)</li>
+        <li>No auth (public tool)</li>
+        <li>Claude 3.5 Sonnet API for pain point extraction</li>
+        <li>rss-parser for Reddit RSS feed scraping</li>
+        <li>Deployed on Vercel</li>
+      </ul>
+
+      <h2>Key Constraints</h2>
+      <ul>
+        <li><strong>5 curated subreddits only</strong> — r/SaaS, r/Entrepreneur, r/startups, r/indiehackers, r/ProductManagement (avoids expensive Reddit API)</li>
+        <li><strong>RSS feeds for data access</strong> — Free, reliable, avoids API costs that killed GummySearch</li>
+        <li><strong>Weekly batch processing</strong> — Not real-time monitoring</li>
+        <li><strong>Stateless design</strong> — No user accounts, no saved searches</li>
+      </ul>
+
+      <h2>Kill Criteria</h2>
+      <p>
+        If extraction accuracy <60% after Tuesday spike, OR if RSS feed data is insufficient, OR if the structured output isn't more useful than 30 minutes of manual Reddit browsing — simplify or kill the project.
+      </p>
+    </section>
+  </div>
+
+  <!-- RESEARCH TAB -->
+  <div id="research" class="tab-content">
+    <section class="article">
+      <p><em>Completed Monday Feb 9, 2026 • 2.5 hours</em></p>
+
+      <h2>Problem Signal</h2>
+      <p><strong>Who has this problem most acutely?</strong> Solo indie hackers and early-stage founders (pre-product-market fit) who are shipping multiple MVPs per year. Specifically: technical founders who can build quickly but struggle with customer discovery, repeat builders who've launched multiple products without traction, and bootstrap founders without budget for expensive research tools ($59-$hundreds/month).</p>
+
+      <h3>Patterns Across Complaints</h3>
+      <ul>
+        <li><strong>"Wasted time"</strong> appears repeatedly - builders shipping without validation, then starting over</li>
+        <li><strong>"I spent weeks"</strong> researching but still got it wrong - research is time-consuming AND unreliable when done manually</li>
+        <li><strong>"Nobody needed it"</strong> - builders shipping solutions looking for problems instead of solving real pain</li>
+        <li><strong>Overconfidence blindness</strong> - "I know it will work" prevents proper validation</li>
+        <li><strong>Gap between intent and action</strong> - surveys and hypotheticals don't predict actual behavior</li>
+      </ul>
+
+      <h2>Signals For</h2>
+      <ol>
+        <li><strong>Active existing market</strong> - GummySearch built a profitable business around this exact problem (multiple pricing tiers, users paying $29-$59/month), proving willingness to pay</li>
+        <li><strong>Reddit is recognized as THE source</strong> - multiple articles, tools, and founder advice consistently point to Reddit as the best place for authentic problem discovery</li>
+        <li><strong>Manual process is painful</strong> - founders spend "30-40 hours taking notes" on Reddit to find pain points</li>
+        <li><strong>Validation gap is costing founders months</strong> - "validate for a month vs. build for 6 months" framing shows the stakes</li>
+        <li><strong>This tests Layer 1 of the pipeline</strong> - directly validates whether problem signal validation can be automated</li>
+      </ol>
+
+      <h2>Signals Against</h2>
+      <ol>
+        <li><strong>GummySearch is shutting down</strong> - the category leader announced closure (no new purchases after Nov 30, service ends late 2026). Red flag that needs investigation.</li>
+        <li><strong>Reddit API is expensive/restricted</strong> - Free tier is basically unusable. Paid tier "starts at thousands per month." Major cost/feasibility risk.</li>
+        <li><strong>Scraping is fragile</strong> - workarounds exist (RSS feeds, browser automation) but they're brittle and could break if Reddit changes their frontend</li>
+        <li><strong>Competitive landscape is already crowded</strong> - PainOnSocial, Peekdit, BigIdeasDB, plus general scraping tools</li>
+        <li><strong>Single-source tool has limited moat</strong> - if we only scrape Reddit, competitors can copy quickly</li>
+        <li><strong>Self-referential risk</strong> - building a tool to help us build better tools. Easy to over-optimize for our own workflow</li>
+      </ol>
+
+      <h2>Competitive Landscape</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Pricing</th>
+            <th>Core Bet</th>
+            <th>What They Skip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GummySearch</td>
+            <td>$29-$59/mo (shutting down)</td>
+            <td>Reddit audience research</td>
+            <td>API-dependent, shutting down suggests cost issues</td>
+          </tr>
+          <tr>
+            <td>PainOnSocial</td>
+            <td>"More affordable"</td>
+            <td>AI-powered pain point extraction, 0-100 scoring</td>
+            <td>Curated communities only, single platform</td>
+          </tr>
+          <tr>
+            <td>Peekdit</td>
+            <td>Free + paid tiers</td>
+            <td>Research Mode auto-captures as you scroll</td>
+            <td>Manual/semi-manual, not fully automated</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Why hasn't this been built well yet?</strong> Reddit API cost structure killed the leader. GummySearch shutting down after building a working business suggests the 2023 API pricing changes ($thousands/month for meaningful access) destroyed unit economics. The technical challenge isn't extraction — it's sustainable, affordable data access at scale.</p>
+
+      <h2>Technical Feasibility</h2>
+      <p><strong>MVP Scale Cost Estimate:</strong></p>
+      <ul>
+        <li>Scrape 50 subreddits/week via RSS: <strong>$0</strong> (free)</li>
+        <li>Claude API for pattern extraction (estimated 500K tokens/week): <strong>~$7.50-$37.50/week</strong></li>
+        <li>Hosting (Vercel): <strong>$0</strong> (free tier sufficient for MVP)</li>
+      </ul>
+
+      <p><strong>Hardest technical part:</strong> Problem signal extraction quality. Reddit threads are noisy - memes, jokes, off-topic replies. The AI needs to distinguish genuine complaints from casual mentions, extract the core problem from conversational text, identify recurring patterns, and score pain intensity. If extraction produces low-quality signals, the tool is worthless.</p>
+
+      <h2>Verdict</h2>
+      <p><strong>BUILD</strong> - with critical scope constraints.</p>
+
+      <p><strong>Conviction level: Medium</strong> - because signals are genuinely mixed. Clear demand exists (people pay $29-$59/month for this), but GummySearch shutting down is a major red flag. We're betting we can succeed by: (1) using free RSS instead of paid API, (2) focusing on extraction quality over comprehensive coverage, (3) treating this as pipeline R&D not a standalone product.</p>
+
+      <p><strong>Kill criteria by Wednesday:</strong> If pattern extraction produces >40% false positives, OR if RSS feed data is too limited, OR if the structured output isn't actually more useful than just spending 30 minutes browsing r/indiehackers manually.</p>
+    </section>
+  </div>
+
+  <!-- SCOPE TAB -->
+  <div id="scope" class="tab-content">
+    <section class="article">
+      <h2>Target Persona</h2>
+      <p><strong>Who:</strong> Solo indie hackers and technical founders building 3+ MVPs per year, pre-PMF, who can code fast but struggle with customer discovery and validation. Typically bootstrapped, no budget for $59/month research tools.</p>
+
+      <p><strong>Trigger moment:</strong> Monday morning. They have 2-3 product ideas and need to pick one to build this week. They know they should "do research" but dread spending hours scrolling Reddit looking for problem signals.</p>
+
+      <p><strong>Current workaround:</strong></p>
+      <ul>
+        <li>Manually browse r/Entrepreneur, r/startups, r/SaaS for 2-4 hours, copy-pasting interesting complaints into a doc</li>
+        <li>Or skip research entirely and just start building (then pivot/abandon later)</li>
+        <li>Or pay $29-$59/month for GummySearch/PainOnSocial (but hesitate due to cost)</li>
+      </ul>
+
+      <h2>One Workflow</h2>
+      <p><strong>Input:</strong> User selects 1-3 topic keywords (e.g., "SaaS pricing," "freelance burnout," "AI agents") OR uses the default "recent complaints" across all 5 curated subreddits.</p>
+
+      <p><strong>Process:</strong></p>
+      <ol>
+        <li>System fetches last 7 days of posts from 5 curated subreddits via RSS feeds (r/SaaS, r/Entrepreneur, r/startups, r/indiehackers, r/ProductManagement)</li>
+        <li>Filters posts by keyword relevance (if provided) and minimum engagement (>5 upvotes, >2 comments)</li>
+        <li>Claude extracts pain points from post titles + top 3 comments per post</li>
+        <li>AI scores each pain point 0-100 based on: intensity (frustration level), frequency (how often it appears), specificity (actionable vs vague)</li>
+        <li>Groups similar pain points into clusters with source quotes</li>
+      </ol>
+
+      <p><strong>Output:</strong> Structured markdown report with:</p>
+      <ul>
+        <li>Top 10 pain point clusters ranked by score</li>
+        <li>2-3 supporting Reddit quotes per cluster (with post URLs)</li>
+        <li>One-line summary of what people have tried and abandoned</li>
+        <li>Estimated time to generate: 2-3 minutes</li>
+      </ul>
+
+      <p><strong>Session length:</strong> 5-10 minutes total (30 seconds to input keywords, 2-3 min AI processing, 2-5 min reviewing output)</p>
+
+      <h2>In Scope</h2>
+      <ul>
+        <li>Scrape 5 curated subreddits via RSS (last 7 days)</li>
+        <li>AI-powered pain point extraction from posts + comments</li>
+        <li>Scoring algorithm (intensity, frequency, specificity)</li>
+        <li>Grouping similar pain points into clusters</li>
+        <li>Markdown report with source attribution (Reddit post URLs)</li>
+        <li>Optional keyword filtering</li>
+        <li>Basic landing page explaining what it does</li>
+      </ul>
+
+      <h2>Out of Scope (and Why)</h2>
+      <ul>
+        <li><strong>Custom subreddit search</strong> — Requires expensive Reddit API, would kill us like it killed GummySearch. 5 curated subs is enough for MVP validation.</li>
+        <li><strong>Real-time monitoring</strong> — Weekly batch is sufficient for Monday research use case. Real-time adds complexity without proportional value.</li>
+        <li><strong>Historical data (>7 days)</strong> — RSS feeds only provide recent posts. 7 days is enough signal.</li>
+        <li><strong>Multi-platform (HN, forums, Twitter)</strong> — Single platform tests if the concept works. Cross-platform is Layer 2-3 of the bigger pipeline.</li>
+        <li><strong>User accounts / saved searches</strong> — No auth this week. Tool is stateless.</li>
+        <li><strong>Competitive analysis</strong> — That's Layer 2 (Competitive Teardown). This week only tests Layer 1.</li>
+      </ul>
+
+      <h2>Success Criteria</h2>
+      <ol>
+        <li>A stranger can visit the URL and generate a pain point report with zero instructions</li>
+        <li>Extraction accuracy >60% - manually review 20 extracted pain points: at least 12/20 should be legitimate, actionable problem signals</li>
+        <li>Processing completes in <3 minutes from submit to full report display</li>
+        <li>We actually use it Monday - if we won't use our own tool for next week's research, it's not solving the problem</li>
+      </ol>
+
+      <h2>Revenue Hypothesis</h2>
+      <p><strong>Who would pay:</strong> Same persona - indie hackers doing weekly/monthly validation research. Also: product managers at early-stage startups, indie consultants doing client discovery.</p>
+
+      <p><strong>What they'd pay:</strong> $10-20/month or $5 per report (one-time). We'd price lower than GummySearch ($29-$59/month) because: (1) limited to 5 subreddits not customizable, (2) weekly batch not real-time, (3) MVP quality. Customers paying for: time savings (2-3 hours) + pattern detection they'd miss manually.</p>
+
+      <p><strong>When to test pricing:</strong> Week 2 or 3. This week: free, focus on "does the extraction work?" If 3+ people use it and say it's useful → add Stripe checkout next week.</p>
+
+      <p><strong>Simplest payment test:</strong> Gumroad "Buy credits" button → 5 reports for $25. No subscription complexity, tests willingness to pay without ongoing billing headaches.</p>
+    </section>
+  </div>
+
+  <!-- DATA MODEL TAB -->
+  <div id="data-model" class="tab-content">
+    <section class="article">
+      <p><strong>Key decision:</strong> MVP is stateless - no database. Data model documents conceptual entities for the response structure, not persisted tables.</p>
+
+      <h2>Entities</h2>
+
+      <h3>PainPointCluster</h3>
+      <p><em>The grouped pain points returned in the report. This is the primary output structure.</em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>yes</td>
+            <td>Generated UUID for frontend display</td>
+          </tr>
+          <tr>
+            <td>summary</td>
+            <td>string</td>
+            <td>yes</td>
+            <td>One-line description (e.g., "Email marketing tools are too expensive")</td>
+          </tr>
+          <tr>
+            <td>score</td>
+            <td>number</td>
+            <td>yes</td>
+            <td>0-100 composite score (intensity + frequency + specificity)</td>
+          </tr>
+          <tr>
+            <td>intensity</td>
+            <td>number</td>
+            <td>yes</td>
+            <td>0-100, how frustrated people are</td>
+          </tr>
+          <tr>
+            <td>frequency</td>
+            <td>number</td>
+            <td>yes</td>
+            <td>How many times this appears across posts</td>
+          </tr>
+          <tr>
+            <td>specificity</td>
+            <td>number</td>
+            <td>yes</td>
+            <td>How actionable/concrete vs vague</td>
+          </tr>
+          <tr>
+            <td>source_quotes</td>
+            <td>SourceQuote[]</td>
+            <td>yes</td>
+            <td>2-3 supporting quotes</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>timestamp</td>
+            <td>yes</td>
+            <td>When this was extracted</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>SourceQuote</h3>
+      <p><em>Reddit posts/comments that support a pain point.</em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>text</td>
+            <td>string</td>
+            <td>yes</td>
+            <td>The actual quote (50-200 chars)</td>
+          </tr>
+          <tr>
+            <td>reddit_url</td>
+            <td>string</td>
+            <td>yes</td>
+            <td>Full URL to the post/comment</td>
+          </tr>
+          <tr>
+            <td>subreddit</td>
+            <td>string</td>
+            <td>yes</td>
+            <td>Which sub it came from (r/Entrepreneur, etc.)</td>
+          </tr>
+          <tr>
+            <td>upvotes</td>
+            <td>number</td>
+            <td>no</td>
+            <td>Reddit upvote count (signal of validation)</td>
+          </tr>
+          <tr>
+            <td>posted_at</td>
+            <td>timestamp</td>
+            <td>yes</td>
+            <td>When the Reddit post was created</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>SearchRequest</h3>
+      <p><em>Ephemeral input parameters. Exists only in-memory during processing.</em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>keywords</td>
+            <td>string[]</td>
+            <td>no</td>
+            <td>User-provided topics. Empty = all posts.</td>
+          </tr>
+          <tr>
+            <td>subreddits</td>
+            <td>string[]</td>
+            <td>yes</td>
+            <td>Default: 5 curated subs</td>
+          </tr>
+          <tr>
+            <td>days_back</td>
+            <td>number</td>
+            <td>yes</td>
+            <td>Default: 7</td>
+          </tr>
+          <tr>
+            <td>min_engagement</td>
+            <td>object</td>
+            <td>yes</td>
+            <td>{ upvotes: 5, comments: 2 }</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Relationships</h2>
+      <pre>PainPointCluster --&lt; SourceQuote  (one-to-many)</pre>
+      <p>Each pain point cluster has 2-3 supporting source quotes. That's the only relationship. Everything else is ephemeral.</p>
+
+      <h2>Auth & Storage</h2>
+      <ul>
+        <li><strong>Auth provider:</strong> None - completely public this week</li>
+        <li><strong>Primary DB:</strong> None - stateless API this week</li>
+        <li><strong>File storage:</strong> Not needed - reports are ephemeral</li>
+        <li><strong>Caching:</strong> Optional - if scraping + extraction takes >3 minutes, cache SearchRequest results in memory (Node.js Map with TTL) to avoid re-processing identical requests within 1 hour</li>
+      </ul>
+
+      <p><strong>Rationale for no DB:</strong> The workflow is "generate report" not "save my searches." Adding auth adds 2-3 hours of complexity for zero MVP value. Can always add Supabase next week if we want features like: save searches, compare over time, email digests.</p>
+
+      <h2>What This Model Doesn't Cover (Intentionally)</h2>
+      <ul>
+        <li>User accounts — No auth, no user profiles</li>
+        <li>Saved searches — No search history, no "my reports" page</li>
+        <li>Custom subreddits — Hardcoded to 5 curated subs</li>
+        <li>Report versioning — Can't compare "pain points this week vs last week"</li>
+        <li>Billing/credits — No payment tracking</li>
+        <li>Notification preferences — No "email me weekly reports"</li>
+        <li>Analytics/usage tracking — Not tracking "which pain points get clicked most"</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- BUILD PLAN TAB -->
+  <div id="build-plan" class="tab-content">
+    <section class="article">
+      <h2>Risk Stack</h2>
+      <p><em>Ordered by "if this doesn't work, nothing else matters." Build in this order.</em></p>
+
+      <h3>🔴 Risk 1: Pain Point Extraction Quality</h3>
+      <p><strong>What:</strong> Claude needs to reliably extract actionable pain points from noisy Reddit threads (titles + top comments), distinguish real complaints from jokes/memes, and score them meaningfully (intensity, specificity).</p>
+
+      <p><strong>Why it's risky:</strong></p>
+      <ul>
+        <li>Reddit is 80% noise (memes, off-topic, sarcasm)</li>
+        <li>Prompt engineering is unpredictable - might need 5-10 iterations to get acceptable quality</li>
+        <li>"Actionable pain point" is subjective - hard to define programmatically</li>
+        <li>If accuracy <60%, tool is worthless (fails success criteria)</li>
+      </ul>
+
+      <p><strong>Spike plan (Tuesday AM, 2 hours):</strong></p>
+      <ol>
+        <li>Manually scrape 20 recent posts from r/Entrepreneur via RSS</li>
+        <li>Write Claude prompt to extract pain points with scoring</li>
+        <li>Run extraction on all 20 posts</li>
+        <li>Manually review results: count true positives (real pain points) vs false positives (noise)</li>
+        <li>Iterate prompt 3-4 times to improve accuracy</li>
+      </ol>
+
+      <p><strong>Pass/fail:</strong> If we can achieve 12+/20 true positives (60% accuracy) after 4 prompt iterations, we're good. If still <60% after 4 iterations, either: (a) simplify extraction (remove scoring, just extract quotes), or (b) kill the project.</p>
+
+      <h3>🟡 Risk 2: RSS Feed Data Volume & Reliability</h3>
+      <p><strong>What:</strong> Reddit RSS feeds need to provide enough recent posts (20+ per subreddit) to extract patterns. Unclear if RSS feeds work consistently or if Reddit throttles them.</p>
+
+      <p><strong>Why it's risky:</strong></p>
+      <ul>
+        <li>RSS might only return 5-10 posts per sub (not enough for pattern detection)</li>
+        <li>RSS might be delayed (12-24 hours old = stale signals)</li>
+        <li>Reddit could block RSS access if we scrape too aggressively</li>
+        <li>If RSS doesn't work, fallback is PRAW (free tier API) which adds complexity</li>
+      </ul>
+
+      <p><strong>Pass/fail:</strong> If RSS returns 15+ posts per subreddit from last 7 days, we're good. If <10 posts/sub, add PRAW as backup source.</p>
+
+      <h3>🟢 Risk 3: Processing Speed (<3 minutes)</h3>
+      <p><strong>What:</strong> Full workflow (scrape 5 subs via RSS → filter posts → Claude extraction on 50-100 posts → group into clusters) must complete in under 3 minutes.</p>
+
+      <p><strong>Notes:</strong> Claude API streaming can help perceived speed. Parallel processing: scrape all 5 RSS feeds simultaneously. If too slow: add in-memory caching (1-hour TTL). This is lower risk because it's an optimization problem, not a "does it work at all" problem.</p>
+
+      <h2>Build Sequence</h2>
+
+      <h3>Tuesday: Prove the hard part</h3>
+      <ul>
+        <li><strong>SPIKE: Risk 1 & 2 by noon</strong> — Test extraction quality (60%+ accuracy) + RSS feed viability (15+ posts/sub)</li>
+        <li>If pass: Scaffold Next.js project (App Router, TypeScript, Tailwind)</li>
+        <li>If extraction <60%: Iterate prompt OR simplify to "just extract quotes, skip scoring"</li>
+        <li>If RSS fails: Integrate PRAW free tier as fallback</li>
+        <li>Create basic API route: <code>/api/extract</code> that accepts keywords, returns mock data</li>
+        <li>Simple form UI: keyword input + submit button</li>
+      </ul>
+      <p><strong>End of day:</strong> Extraction spike complete with proven accuracy + Next.js scaffold running locally. Can submit form and see mock response.</p>
+
+      <h3>Wednesday: Core workflow end-to-end</h3>
+      <ul>
+        <li>RSS scraping function: fetch last 7 days from 5 subreddits, parse XML</li>
+        <li>Filtering logic: min engagement (5 upvotes, 2 comments), keyword matching if provided</li>
+        <li>Claude integration: send filtered posts → get back pain point clusters with scores</li>
+        <li>Display results: Render markdown report in browser (clusters ranked by score, source quotes with URLs)</li>
+        <li>Error handling: Show friendly error if scraping fails or Claude times out</li>
+      </ul>
+      <p><strong>End of day:</strong> Can enter keywords → get real extraction results → see ranked pain points with Reddit links. Workflow works end-to-end but ugly/slow is fine.</p>
+
+      <h3>Thursday: Optimize & polish</h3>
+      <ul>
+        <li>Performance: Parallel RSS fetching, streaming Claude responses, or add caching if >3 min</li>
+        <li>Landing page: Explain what it does, show example output, "Try it" CTA</li>
+        <li>UX improvements: Loading states, empty state (no results), copy markdown button</li>
+        <li>Edge cases: No keywords provided (use defaults), zero results (better message), malformed RSS (graceful degradation)</li>
+        <li>Manual QA: Test all 5 subreddits individually, test with different keywords</li>
+      </ul>
+      <p><strong>End of day:</strong> Tool is fast enough (<3 min), stranger can understand and use it, handles errors gracefully.</p>
+
+      <h3>Friday morning: Ship</h3>
+      <ul>
+        <li>Deploy to Vercel: <code>reddit-signals.theaiethos.com</code></li>
+        <li>Verify deployment checklist: Custom domain, env vars (ANTHROPIC_API_KEY), smoke test production</li>
+        <li>Smoke test: Fresh incognito browser, visit URL, run extraction with "SaaS pricing", verify results load</li>
+        <li>Screenshot final output for documentation</li>
+        <li>Use it ourselves: Generate a report for next Monday's research, confirm it's actually useful</li>
+        <li>Fill out RETRO.md by EOD</li>
+      </ul>
+
+      <h2>Stack Decisions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Choice</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Framework</td>
+            <td>Next.js 15 (App Router)</td>
+            <td>Default. Server components for RSS scraping, API routes for Claude calls. Fast to build.</td>
+          </tr>
+          <tr>
+            <td>Auth</td>
+            <td>None</td>
+            <td>Stateless tool, no user accounts. Anyone can use it. Saves 2-3 hours of Clerk setup.</td>
+          </tr>
+          <tr>
+            <td>Database</td>
+            <td>None</td>
+            <td>Ephemeral reports. No history/saving needed. Can add Supabase next week if we want saved searches.</td>
+          </tr>
+          <tr>
+            <td>AI</td>
+            <td>Claude 3.5 Sonnet</td>
+            <td>Best prompt-following for extraction tasks. Haiku too weak for nuanced pain point detection. Opus overkill.</td>
+          </tr>
+          <tr>
+            <td>Hosting</td>
+            <td>Vercel</td>
+            <td>Default. Zero-config Next.js deploys. Edge functions handle API routes.</td>
+          </tr>
+          <tr>
+            <td>RSS Parsing</td>
+            <td>rss-parser npm</td>
+            <td>Mature library (3M weekly downloads). Handles Reddit's XML format reliably.</td>
+          </tr>
+          <tr>
+            <td>HTTP Client</td>
+            <td>fetch (built-in)</td>
+            <td>No axios needed. Native fetch in Node 18+ handles Reddit RSS requests fine.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Fallback Plans</h2>
+      <p><strong>If Risk 1 fails (extraction accuracy <60%):</strong></p>
+      <ul>
+        <li>First: Iterate prompt 3-4 times with different approaches (few-shot examples, stricter filtering, simpler scoring rubric)</li>
+        <li>If still <60%: Simplify extraction - remove scoring, just extract raw quotes with source URLs. Still useful but less magical.</li>
+        <li>If even quote extraction is poor (<40% useful): Kill the project. Problem signal extraction is the core value prop.</li>
+      </ul>
+
+      <p><strong>If behind by Wednesday EOD (workflow not working):</strong></p>
+      <ul>
+        <li>Cut clustering - just show flat list of pain points ranked by score</li>
+        <li>Cut keyword filtering - only support "show me everything from these 5 subs"</li>
+        <li>Cut score breakdown - just show composite score (0-100)</li>
+        <li>Deploy Thursday AM with working but basic version</li>
+      </ul>
+
+      <p><strong>If AI output quality is poor (Thursday QA reveals issues):</strong></p>
+      <ul>
+        <li>Prompt iteration budget: 6 attempts max (2 hours)</li>
+        <li>After 6 attempts without improvement: Ship with disclaimer "Beta - extraction quality improving" and collect user feedback</li>
+        <li>Add feedback buttons: "This was useful" / "This was noise" to gather training data</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- FRICTION LOG TAB -->
+  <div id="friction-log" class="tab-content">
+    <section class="article">
+      <p><em>Real-time capture of decisions the spec didn't cover, rework from ambiguity, and "should have known this Monday" moments. Updated throughout the build week.</em></p>
+
+      <h2>Tuesday</h2>
+      <table class="friction-table">
+        <thead>
+          <tr>
+            <th style="width: 10%;">Time</th>
+            <th style="width: 40%;">What happened</th>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 30%;">Could Monday have caught this?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center; color: rgba(255,255,255,0.5); font-style: italic;">No entries yet — build starts Tuesday Feb 10</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Wednesday</h2>
+      <table class="friction-table">
+        <thead>
+          <tr>
+            <th style="width: 10%;">Time</th>
+            <th style="width: 40%;">What happened</th>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 30%;">Could Monday have caught this?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center; color: rgba(255,255,255,0.5); font-style: italic;">No entries yet</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Thursday</h2>
+      <table class="friction-table">
+        <thead>
+          <tr>
+            <th style="width: 10%;">Time</th>
+            <th style="width: 40%;">What happened</th>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 30%;">Could Monday have caught this?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center; color: rgba(255,255,255,0.5); font-style: italic;">No entries yet</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Friday</h2>
+      <table class="friction-table">
+        <thead>
+          <tr>
+            <th style="width: 10%;">Time</th>
+            <th style="width: 40%;">What happened</th>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 30%;">Could Monday have caught this?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center; color: rgba(255,255,255,0.5); font-style: italic;">No entries yet</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><em>Categories: (a) better research, (b) better scoping, (c) better risk ID, (d) unpredictable</em></p>
+    </section>
+  </div>
+
+  <!-- RETRO TAB -->
+  <div id="retro" class="tab-content">
+    <section class="article">
+      <p><strong>Status:</strong> Not yet complete — retro will be published Friday Feb 13, 2026 EOD.</p>
+
+      <p><em>Completed Friday afternoon after shipping. Documents what the pipeline got right, what it missed, friction log analysis, and template improvements for next week.</em></p>
+
+      <h3>What Will Be Covered</h3>
+      <ul>
+        <li><strong>What the pipeline got right</strong> - Specific moments where having the planning artifacts saved time or prevented a mistake</li>
+        <li><strong>What the pipeline missed</strong> - Specific moments where the planning was wrong, incomplete, or misleading</li>
+        <li><strong>Friction log summary</strong> - Categorized count of friction points and analysis</li>
+        <li><strong>Did structured planning outperform "just chat with Claude"?</strong> - Honest assessment of each artifact's value</li>
+        <li><strong>Revenue signal</strong> - Did anyone try it? Express willingness to pay? What's the next revenue test?</li>
+        <li><strong>Template changes for next week</strong> - What's getting added, removed, or changed based on this week's friction</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+<script>
+function showTab(tabName) {
+  // Hide all tabs
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => tab.classList.remove('active'));
+  contents.forEach(content => content.classList.remove('active'));
+
+  // Show selected tab
+  document.querySelector(`.tab[onclick*="${tabName}"]`).classList.add('active');
+  document.getElementById(tabName).classList.add('active');
+}
+</script>
+
+</body>
+</html>
