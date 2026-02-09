@@ -10,11 +10,11 @@
   .program-badge {
     display: inline-block;
     padding: 4px 12px;
-    background: rgba(100, 100, 255, 0.1);
-    border: 1px solid rgba(100, 100, 255, 0.3);
+    background: rgba(161, 98, 7, 0.1);
+    border: 1px solid var(--accent-dim);
     border-radius: 4px;
     font-size: 13px;
-    color: rgba(100, 100, 255, 0.9);
+    color: var(--accent);
     margin-bottom: 16px;
   }
   .program-badge a {
@@ -27,7 +27,7 @@
   .tabs {
     display: flex;
     gap: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--border);
     margin: 32px 0 24px 0;
     flex-wrap: wrap;
   }
@@ -35,17 +35,17 @@
     padding: 8px 16px;
     cursor: pointer;
     border-bottom: 2px solid transparent;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
     transition: all 0.2s;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
   }
   .tab:hover {
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
   }
   .tab.active {
-    color: rgba(255,255,255,0.95);
-    border-bottom-color: rgba(100, 100, 255, 0.8);
+    color: var(--text-primary);
+    border-bottom-color: var(--accent);
   }
   .tab-content {
     display: none;
@@ -63,10 +63,10 @@
   .tab-content td {
     padding: 10px 12px;
     text-align: left;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--border);
   }
   .tab-content th {
-    background: rgba(0,0,0,0.3);
+    background: var(--surface-2);
     font-weight: 600;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;

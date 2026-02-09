@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Program — ai·ethos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    margin: 32px 0 24px 0;
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .tab:hover {
+    color: var(--text-secondary);
+  }
+  .tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent);
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-dim);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .callout h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+  }
+  .callout p {
+    margin-bottom: 12px;
+  }
+  .callout p:last-child {
+    margin-bottom: 0;
+  }
+  .empty-state {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 32px 0;
+    text-align: center;
+  }
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .phase-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+  .phase-card h3 {
+    font-family: var(--mono);
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+  .phase-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  pre {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  @media (max-width: 600px) {
+    .phase-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/projects" class="active">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <a href="/projects" class="back-link">← all projects</a>
+
+  <header>
+    <div class="project-header" style="margin-bottom: 16px;">
+      <h1 style="margin-bottom: 0;">Growth Program</h1>
+      <span class="project-status ready">ready</span>
+    </div>
+    <div class="project-meta">
+      <span>Build Program</span>
+      <span>·</span>
+      <span>Post-build validation</span>
+      <span>·</span>
+      <span>Staged</span>
+    </div>
+    <p class="page-intro">
+      Takes shipped MVPs from "live URL" to "evidence of demand or a kill decision." Projects graduate here after their Build Program retro if they show evidence of a real user on the other side. 4-week cycle: exposure → signal collection → iteration → revenue test → verdict.
+    </p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('intake')">Intake</div>
+    <div class="tab" onclick="showTab('distribution')">Distribution</div>
+    <div class="tab" onclick="showTab('signals')">Signals</div>
+    <div class="tab" onclick="showTab('iteration')">Iteration</div>
+    <div class="tab" onclick="showTab('revenue')">Revenue Test</div>
+    <div class="tab" onclick="showTab('verdict')">Verdict</div>
+  </div>
+
+  <div id="overview" class="tab-content active">
+    <section class="article">
+
+      <h2>What This Is</h2>
+
+      <p>The structured process for taking a shipped MVP from "live URL" to evidence of demand or a kill decision. The Build Program optimizes for learning whether something can be built. The Growth Program optimizes for learning whether anyone cares.</p>
+
+      <div class="callout">
+        <h3>Graduation Criteria</h3>
+        <p>Projects enter Growth after their Friday Build Program retro if the answer to this question is "yes":</p>
+        <p><strong>"Did anything about this week's build make me think there's a real user on the other side?"</strong></p>
+        <p>If the answer is "no but I learned something useful," that's a valid Build Program success that doesn't need Growth.</p>
+      </div>
+
+      <h2>The Four Phases</h2>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <h3>Phase 1: Exposure</h3>
+          <p>Get the MVP in front of 50-100 people who match the target persona. Small-scale distribution where you can observe behavior. Not a launch—targeted exposure.</p>
+        </div>
+
+        <div class="phase-card">
+          <h3>Phase 2: Signal Collection</h3>
+          <p>Understand what happened when people encountered the product. Track quantitative metrics (workflow completion, returns) and qualitative feedback (what they said, asked for, got confused by).</p>
+        </div>
+
+        <div class="phase-card">
+          <h3>Phase 3: Iteration</h3>
+          <p>Make one targeted change based on signals. Not a redesign—one hypothesis about the biggest drop-off point. Time-boxed to 3 hours maximum.</p>
+        </div>
+
+        <div class="phase-card">
+          <h3>Phase 4: Revenue Test</h3>
+          <p>Learn if anyone will take a payment action. Not "would you pay?" but "here's the price, click buy." Tests willingness to pay, not ability to deliver a paid product yet.</p>
+        </div>
+      </div>
+
+      <h2>The Verdict</h2>
+
+      <p>After 4 weeks, one of three outcomes:</p>
+
+      <div class="detail-grid" style="margin-top: 24px;">
+        <div class="detail-item">
+          <div class="label">Sustain</div>
+          <div class="value">Revenue signal + returning users + clear path to $500 MRR. Becomes priority product. Gets Build Program weeks for feature development. Rare—maybe 1 in 10.</div>
+        </div>
+        <div class="detail-item">
+          <div class="label">Orbit</div>
+          <div class="value">Some interest but not enough to invest heavily. Keep it live, monitor passively, revisit if signals change. Low-maintenance mode. Most "successful" builds.</div>
+        </div>
+        <div class="detail-item">
+          <div class="label">Kill</div>
+          <div class="value">No signal. No workflow completions. No revenue action. Document learnings in VERDICT.md and move on. Not a failure—a data point for the Build Program.</div>
+        </div>
+      </div>
+
+      <h2>Time Budget</h2>
+
+      <p>Growth Program work cannot compete with Build Program days. Total: ~2-3 hours/week, mostly Monday PM and Friday PM. If a project needs more than 3 hours/week, it should either become the Build Program focus for a week or get killed.</p>
+
+      <h2>Current Capacity</h2>
+
+      <p>Start with 1 project at a time. Full attention, clean signal, learn the process. As the process matures, scale to 2-3 with lighter touch per project.</p>
+
+      <h2>Active Projects</h2>
+
+      <p class="empty-state">No projects in Growth yet. Projects will appear here after graduating from the Pre-build Intelligence Pipeline.</p>
+
+    </section>
+  </div>
+
+  <div id="intake" class="tab-content">
+    <section class="article">
+      <h2>Growth Intake Template</h2>
+      <p>Completed on Friday PM after deciding to graduate a project from Build Program. Captures handoff context and sets up hypotheses for the Growth cycle.</p>
+
+      <pre># Growth Intake: [Project Name]
+
+> **Graduated from Build Program:** [date]
+> **Live URL:** [url]
+> **Build Program RETRO summary:** [one sentence — what worked, what's uncertain]
+
+---
+
+## What It Does (for a stranger)
+
+_One paragraph. If you can't explain it in 3 sentences, the product has a clarity problem that Growth can't fix._
+
+## Who It's For
+
+**Persona from SCOPE.md:** [copy]
+**Refined after build:** [anything you learned during the build about who this is actually for]
+
+## The Core Workflow
+
+**Input →** [what the user provides]
+**Output →** [what they get back]
+**Time to value:** [how long from landing page to "this was useful"]
+
+---
+
+## Hypotheses Entering Growth
+
+_What do you believe about this product that you haven't tested yet?_
+
+### H1: People have this problem
+**Evidence from research:** [strongest signal from RESEARCH.md]
+**Still unproven:** [what you're assuming but haven't validated with real users]
+
+### H2: This product solves it
+**Evidence from build:** [did the workflow actually work? Any early testers?]
+**Still unproven:** [does it solve it *well enough* that someone would use it over their current workaround?]
+
+### H3: Someone would pay for this
+**Pricing hypothesis:** [$X/month or one-time, based on competitor research]
+**Comparable pricing:** [what do alternatives charge?]
+**Still unproven:** [is the value clear enough to justify the price?]
+
+---
+
+## What Success Looks Like (4 weeks from now)
+
+_Be specific. "People like it" is not a success criterion._
+
+- [ ] [N] people completed the core workflow without guidance
+- [ ] [N] people returned without prompting
+- [ ] [N] people took a payment action (clicked buy, booked a call, etc.)
+- [ ] Qualitative: [specific feedback that would validate the thesis]
+
+## What Would Kill It
+
+_What signal, if you saw it in 4 weeks, would make you kill this project?_
+
+-
+-
+
+---
+
+## Pre-Growth Checklist
+
+_Before starting exposure, these must be in place:_
+
+- [ ] Analytics installed (Plausible / Vercel Analytics)
+- [ ] Custom event tracking: `workflow_completed` fires when user finishes core action
+- [ ] Landing page clearly explains what the product does in < 10 seconds
+- [ ] No login required to see what it does (demo, example output, or video)
+- [ ] Mobile-responsive (people clicking Reddit/Twitter links are on phones)
+- [ ] Error states handled (bad input doesn't break the product)</pre>
+    </section>
+  </div>
+
+  <div id="distribution" class="tab-content">
+    <section class="article">
+      <h2>Distribution Template</h2>
+      <p>Completed Monday PM of Week 1. Plans where to get 50-100 people matching the persona to see the product within 7 days.</p>
+
+      <pre># Distribution Plan: [Project Name]
+
+> **Target:** 50-100 people matching the persona see this product within 7 days
+> **Budget:** $0. Distribution through content and communities, not ads.
+> **Time budget:** 2 hours to plan, 1 hour to execute, then monitor.
+
+---
+
+## Persona Recap
+
+**Who:** [from INTAKE.md]
+**Where they hang out online:** [subreddits, Slack groups, Discord servers, Twitter communities, forums]
+**What they search for:** [Google queries they'd use when experiencing this problem]
+**How they describe the problem:** [their language, not yours — pull from RESEARCH.md quotes]
+
+---
+
+## Channel Plan
+
+_Pick 2-3 channels. Not all of them. Concentrated effort > scattered presence._
+
+### Channel 1: [e.g., r/freelance]
+
+**Post format:** [Question? Show & Tell? Tutorial?]
+**Draft hook:** [First sentence of the post — this determines whether anyone clicks]
+
+_The hook should describe the PROBLEM, not the product. "I was tired of X so I built Y" works. "Check out my new app" doesn't._
+
+**Post draft:**
+```
+[Write the actual post here. Keep it under 200 words.
+Include the problem, what you built, link, and an ask:
+"would love feedback from people who deal with this"]
+```
+
+**When to post:** [Day/time — check subreddit patterns]
+**Expected reach:** [rough estimate based on sub size and typical post engagement]
+
+### Channel 2: [e.g., Indie Hackers]
+
+**Post format:**
+**Draft hook:**
+**Post draft:**
+```
+
+```
+**When to post:**
+**Expected reach:**
+
+### Channel 3: [e.g., Direct outreach]
+
+**Who:** [Specific people from RESEARCH.md who complained about this problem]
+**Message draft:**
+```
+[Short DM. 2-3 sentences. "Hey, I saw your post about [problem].
+I built something that might help: [link]. Would love your take on it."]
+```
+**Number of people to contact:** [10-20]
+
+---
+
+## What NOT To Do
+
+- Don't post in more than 3 channels in week 1. You need to be able to trace which channel drove which signal.
+- Don't ask "would you use this?" Ask "try it and tell me where you got stuck."
+- Don't mention it's an MVP or that you built it in a week. That frames it as unfinished instead of focused.
+- Don't pay for ads yet. If organic distribution can't get 50 eyeballs, the positioning is wrong.
+
+---
+
+## Tracking
+
+| Channel | Date posted | Link | Views | Clicks | Signups | Workflow completions |
+|---------|------------|------|-------|--------|---------|---------------------|
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+
+_Fill this in over the week. The ratio of clicks → completions is the most important number._
+
+---
+
+## Backup Plan
+
+_If week 1 channels produce < 20 visits:_
+
+- [ ] Rewrite the hook (the problem framing isn't resonating)
+- [ ] Try a different channel from the list above
+- [ ] Post at a different time
+- [ ] Consider: is this a distribution problem or a "nobody has this problem" problem?</pre>
+    </section>
+  </div>
+
+  <div id="signals" class="tab-content">
+    <section class="article">
+      <h2>Signals Template</h2>
+      <p>Running document updated throughout Weeks 1-4. Tracks both quantitative metrics and qualitative feedback to understand what happened when people encountered the product.</p>
+
+      <pre># Signals: [Project Name]
+
+> **Tracking period:** [start date] → [end date]
+> **Analytics:** [Plausible / Vercel Analytics — link to dashboard]
+> **Funnel events:** landing_view → signup → workflow_started → workflow_completed → returned
+
+---
+
+## Weekly Numbers
+
+### Week 1
+
+| Metric | Count | Notes |
+|--------|-------|-------|
+| Unique visitors | | |
+| Signups (if auth required) | | |
+| Workflow started | | |
+| Workflow completed | | |
+| Return visits (unprompted) | | |
+| Time on site (avg) | | |
+
+**Conversion funnel:**
+- Visit → Start: __%
+- Start → Complete: __%
+- Complete → Return: __%
+
+**Biggest drop-off point:** [where in the funnel do people leave?]
+
+### Week 2
+
+| Metric | Count | Notes |
+|--------|-------|-------|
+| Unique visitors | | |
+| Signups | | |
+| Workflow started | | |
+| Workflow completed | | |
+| Return visits | | |
+| Time on site (avg) | | |
+
+**Conversion funnel:**
+- Visit → Start: __%
+- Start → Complete: __%
+- Complete → Return: __%
+
+**Δ from week 1:** [better, worse, same — and why?]
+
+### Week 3-4
+
+_Same structure. Copy the table above._
+
+---
+
+## Qualitative Signals
+
+### What People Said
+
+_Actual quotes. Not your interpretation. Copy-paste from Reddit comments, DMs, emails, tweets._
+
+| Date | Source | Quote | Signal type |
+|------|--------|-------|-------------|
+| | | | positive / negative / confused / feature request |
+| | | | |
+| | | | |
+| | | | |
+
+### What People Asked For
+
+_Feature requests and questions. These reveal what's missing or unclear._
+
+| Request | # of people | Would it change the core workflow? |
+|---------|-------------|-----------------------------------|
+| | | yes / no |
+| | | |
+| | | |
+
+### What Confused People
+
+_Where did they get stuck? What did they misunderstand?_
+
+| Confusion point | How you know | Severity |
+|----------------|--------------|----------|
+| | [analytics, comment, DM] | blocks workflow / slows workflow / cosmetic |
+| | | |
+| | | |
+
+---
+
+## Returning Users
+
+_The most important signal. Someone who comes back without prompting has found value._
+
+| User/identifier | First visit | Return visit(s) | What they did on return |
+|----------------|-------------|-----------------|------------------------|
+| | | | |
+| | | | |
+
+---
+
+## Signal Summary (update weekly)
+
+### Week 1 read:
+_One paragraph. What's the honest read on the signals so far? Not what you hope — what the data says._
+
+### Week 2 read:
+
+### Week 3 read:
+
+### Week 4 read:</pre>
+    </section>
+  </div>
+
+  <div id="iteration" class="tab-content">
+    <section class="article">
+      <h2>Iteration Template</h2>
+      <p>Completed Week 2-3. Makes one targeted change based on signal data. Time-boxed to 3 hours maximum build time.</p>
+
+      <pre># Iteration: [Project Name]
+
+> **Based on:** SIGNALS.md week [N] read
+> **Time budget:** 3 hours maximum build time
+> **Date:** [date]
+
+---
+
+## The Problem
+
+**Biggest funnel drop-off:** [where people leave]
+**Evidence:** [analytics data, quotes, observation]
+**Current experience at this point:** [what the user sees/does right before dropping off]
+
+## Hypothesis
+
+_"I believe [specific change] will [improve specific metric] because [reasoning based on signal data]."_
+
+**Change:** [exactly what you're going to do]
+**Metric to watch:** [one number that tells you if it worked]
+**Current baseline:** [what that metric is today]
+**Target:** [what would "worked" look like?]
+
+---
+
+## What You're NOT Changing
+
+_List things you're tempted to fix but are explicitly not touching this cycle. One change at a time._
+
+- ~~[Thing 1]~~ — not this cycle because [reason]
+- ~~[Thing 2]~~ — not this cycle because [reason]
+
+---
+
+## Implementation
+
+**What to build/change:**
+- [ ] [Concrete task 1]
+- [ ] [Concrete task 2]
+
+**Deploy by:** [date/time]
+**Measurement window:** [how long before you check results — minimum 72 hours]
+
+---
+
+## Result
+
+**Metric before:** [baseline]
+**Metric after:** [post-change, measured after window]
+**Δ:** [change]
+
+**Did it work?**
+- [ ] Yes — the hypothesis was right. Keep the change.
+- [ ] Partially — metric improved but not to target. Note why.
+- [ ] No — metric didn't move or got worse. Revert or accept.
+
+**What this tells you:**
+_One sentence. What did you learn about the user or the product?_
+
+---
+
+## Next Iteration (if warranted)
+
+_Based on this result, is another iteration needed? Or is the product ready for revenue test?_</pre>
+    </section>
+  </div>
+
+  <div id="revenue" class="tab-content">
+    <section class="article">
+      <h2>Revenue Test Template</h2>
+      <p>Completed Week 3-4. Tests willingness to pay, not ability to deliver a paid product. Measurement window: 7-14 days.</p>
+
+      <pre># Revenue Test: [Project Name]
+
+> **Date started:** [date]
+> **Pricing hypothesis from INTAKE.md:** [$X/month or one-time]
+> **Measurement window:** 7-14 days
+
+---
+
+## Pricing Decision
+
+**Price:** [$X]
+**Model:** [one-time / monthly / usage-based / pay-what-you-want]
+**Rationale:** [why this price? based on competitor pricing, perceived value, gut]
+
+**Comparison:**
+| Alternative | Their price | What they offer | Why yours is different |
+|-------------|------------|-----------------|----------------------|
+| | | | |
+| | | | |
+
+**The "would I pay this?" test:** [Honestly — if you had this problem, would $X feel fair?]
+
+---
+
+## Payment Mechanism
+
+_Simplest viable option. Don't overbuild._
+
+**Method:** [Stripe Checkout / LemonSqueezy / Gumroad / Cal.com / "Email me"]
+
+**Implementation:**
+- [ ] Payment link or button created
+- [ ] Placed where? [landing page, after workflow completion, both]
+- [ ] What happens after payment? [immediate access / email / nothing yet]
+- [ ] Confirmation/receipt handled by [payment provider / manual]
+
+**Setup time:** [should be < 1 hour]
+
+---
+
+## What the User Sees
+
+**Before paywall:** [what's free? full workflow? limited workflow? demo only?]
+**The ask:** [exact copy on the button/section — e.g., "Get unlimited reports — $9/month"]
+**After payment:** [what do they get that they didn't have before?]
+
+_If nothing changes after payment yet, that's fine for a test. You're measuring willingness to pay, not delivering a paid product._
+
+---
+
+## Results
+
+### Raw Numbers
+
+| Metric | Count |
+|--------|-------|
+| Saw pricing/payment option | |
+| Clicked "buy" / payment button | |
+| Reached checkout page | |
+| Completed payment | |
+| Total revenue | |
+
+### Conversion Funnel
+
+- Saw price → Clicked buy: __%
+- Clicked buy → Completed payment: __%
+- Overall saw price → paid: __%
+
+### Qualitative
+
+**Did anyone ask about pricing before you showed it?** [yes/no — organic price inquiry is a strong signal]
+**What did people say about the price?** [quotes]
+**Did anyone ask for a different model?** [e.g., "I'd pay per use but not monthly"]
+
+---
+
+## Revenue Signal Assessment
+
+- [ ] **Strong signal:** Someone paid. Repeat.
+- [ ] **Moderate signal:** People clicked buy but didn't complete. Explore why — price? trust? friction?
+- [ ] **Mild signal:** Someone asked about pricing unprompted. Interest exists, mechanism is wrong.
+- [ ] **No signal:** Nobody engaged with pricing at all. Product isn't solving a problem people value with money.
+
+**Honest read:**
+_One paragraph. Is this a product people will pay for? Not "could" — will._
+
+---
+
+## If Revenue Signal is Strong
+
+- [ ] Set up proper billing (if using a hacky test method)
+- [ ] Plan next Build Program week focused on this product's paid features
+- [ ] Define path to $500 MRR: how many customers at what price?
+
+## If Revenue Signal is Weak
+
+- [ ] Is it a pricing problem? (Would a different price change behavior?)
+- [ ] Is it a positioning problem? (Do people understand what they're paying for?)
+- [ ] Is it a product problem? (Is the free version not compelling enough to upgrade from?)
+- [ ] Is it a market problem? (Nobody will pay for this. Kill it.)</pre>
+    </section>
+  </div>
+
+  <div id="verdict" class="tab-content">
+    <section class="article">
+      <h2>Verdict Template</h2>
+      <p>Completed Week 4. Final decision: Sustain, Orbit, or Kill. Documents evidence and learnings that feed back into the Build Program.</p>
+
+      <pre># Verdict: [Project Name]
+
+> **Growth Program duration:** [start date] → [end date]
+> **Total time invested (Growth only):** [hours]
+> **Revenue generated:** [$X]
+
+---
+
+## Evidence Summary
+
+### Quantitative
+
+| Metric | Final number |
+|--------|-------------|
+| Total unique visitors | |
+| Workflow completions | |
+| Completion rate (visit → complete) | |
+| Return visitors | |
+| Payment actions (clicked buy) | |
+| Paying customers | |
+| Revenue | |
+
+### Qualitative
+
+**Strongest positive signal:** [quote or observation]
+**Strongest negative signal:** [quote or observation]
+**Most common feedback theme:** [what kept coming up]
+
+### Iteration Results
+
+**Change made:** [what you changed in Phase 3]
+**Impact:** [did it move the metric?]
+
+---
+
+## Decision
+
+### [ ] Sustain
+
+**Why:** [revenue signal + returning users + clear path to growth]
+**Next steps:**
+- [ ] Dedicate next Build Program week to paid features
+- [ ] Set MRR target: $[X] by [date]
+- [ ] Define the 3 features that would make someone pay more / tell a friend
+- [ ] Move to ongoing product status in project tracker
+
+### [ ] Orbit
+
+**Why:** [some interest, not enough to invest, but worth keeping live]
+**Maintenance plan:**
+- [ ] Keep deployed — no active development
+- [ ] Check analytics monthly (calendar reminder)
+- [ ] Revisit if: [specific trigger that would change the decision]
+- [ ] Auto-kill after [N months] of no engagement
+
+### [ ] Kill
+
+**Why:** [no signal, wrong market, better idea came along]
+**What to preserve:**
+- [ ] Document learnings for future builds
+- [ ] Any reusable code/components → template library
+- [ ] Any validated problem signals → Build Program backlog
+
+---
+
+## What This Taught the Incubator
+
+_The Growth Program's purpose isn't just to validate individual products. It's to make the Build Program better. What did this cycle teach you about what to build next?_
+
+### About the problem space:
+_[Was this problem real? Were you right about who has it?]_
+
+### About distribution:
+_[Which channels worked? Which didn't? What positioning resonated?]_
+
+### About pricing:
+_[What did you learn about willingness to pay in this space?]_
+
+### About the Growth Program itself:
+_[What template needs to change? What step was useless? What was missing?]_
+
+---
+
+## Template Changes
+
+_Based on this cycle, what changes to Growth Program templates for next time?_
+
+### Add:
+-
+
+### Remove:
+-
+
+### Change:
+-</pre>
+    </section>
+  </div>
+
+  <footer>
+    <div>
+      <a href="https://twitter.com/yourusername">twitter</a>
+      <span style="margin: 0 8px; color: var(--border);">·</span>
+      <a href="https://github.com/yourusername">github</a>
+    </div>
+    <div>ai·ethos © 2026</div>
+  </footer>
+
+</div>
+
+<script>
+function showTab(tabName) {
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => tab.classList.remove('active'));
+  contents.forEach(content => content.classList.remove('active'));
+
+  event.target.classList.add('active');
+  document.getElementById(tabName).classList.add('active');
+}
+</script>
+
+</body>
+</html>

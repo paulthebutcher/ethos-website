@@ -402,6 +402,10 @@ a:hover { color: var(--text-primary); }
 }
 .project-card.active { border-color: var(--accent-dim); }
 .project-card.active:hover { border-color: var(--accent); }
+.project-card.ready {
+  opacity: 0.85;
+  border-color: var(--border);
+}
 
 .project-header {
   display: flex;
@@ -427,6 +431,11 @@ a:hover { color: var(--text-primary); }
 }
 
 .project-status.active { color: var(--signal-green); border-color: var(--signal-green); }
+.project-status.ready {
+  color: var(--text-muted);
+  border-color: var(--border);
+  background: var(--surface-2);
+}
 .project-status.on-hold { color: var(--text-muted); border-color: var(--border); }
 .project-status.killed { color: var(--signal-red); border-color: var(--signal-red); }
 
@@ -575,8 +584,31 @@ footer a:hover {
   border-color: var(--accent-dim);
 }
 
+/* Graduation link */
+.graduation-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-top: 12px;
+  display: inline-block;
+}
+
+.graduation-link:hover {
+  color: var(--accent);
+}
+
+/* Wide container for cards/nav on desktop, narrow for text */
+@media (min-width: 900px) {
+  .container.wide {
+    max-width: 900px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
+  body { font-size: 16px; }
+  .container { padding: 0 20px; }
   header { padding: 24px 0 32px; }
   .intro { font-size: 22px; }
   .step-desc { display: none; }
@@ -585,4 +617,23 @@ footer a:hover {
   .detail-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 8px; }
   .project-meta { flex-direction: column; gap: 8px; }
+  .tabs {
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .current-build,
+  .active-project {
+    padding: 16px 20px;
+  }
+  .build-header {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
 }
