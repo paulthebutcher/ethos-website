@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,10 +34,6 @@
     <a href="/" class="site-home">ai<span>·</span>ethos</a>
     <a href="/projects">projects</a>
     <a href="/log">log</a>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <span class="theme-icon">◐</span>
-      <span class="theme-label">dark</span>
-    </button>
   </nav>
 
   <header class="hero-gradient fade-in">
@@ -158,32 +154,6 @@
   </footer>
 
 </div>
-
-<script>
-// Theme toggle functionality
-function toggleTheme() {
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-  html.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-
-  // Update button label
-  const label = document.querySelector('.theme-label');
-  if (label) label.textContent = newTheme === 'dark' ? 'light' : 'dark';
-}
-
-// Load saved theme or default to light
-(function() {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  // Update button label on load
-  const label = document.querySelector('.theme-label');
-  if (label) label.textContent = savedTheme === 'dark' ? 'light' : 'dark';
-})();
-</script>
 
 </body>
 </html>
