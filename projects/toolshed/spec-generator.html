@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spec Generator — The Toolshed</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/toolshed">toolshed</a>
+    <a href="/projects">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <header>
+    <div class="project-meta">
+      <span class="project-layer">Layer 1: Pre-Build Intelligence</span>
+      <span class="project-status planned">planned</span>
+    </div>
+    <h1>Spec Generator</h1>
+    <p class="page-intro">Turns validated ideas into build-ready specifications. Outputs scope doc, tech decisions, and task breakdown.</p>
+  </header>
+
+  <section>
+    <div class="section-label">The problem</div>
+    <p>
+      The gap between "validated idea" and "build-ready spec" is where most projects go sideways. You know what to build, but the spec is either too vague (leading to scope creep) or too rigid (breaking when reality hits).
+    </p>
+    <p>
+      Five previous build attempts showed the same pattern: spec quality is the bottleneck. Better specs → faster builds → more learning per week.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">The approach</div>
+    <p>
+      An MCP server that generates structured specs from Decision Framework outputs:
+    </p>
+    <div class="principles">
+      <div class="principle">
+        <strong>Scope document</strong>
+        <span>What's in v1, what's explicitly out, what's deferred to v2.</span>
+      </div>
+      <div class="principle">
+        <strong>Tech decisions</strong>
+        <span>Stack choices, architecture patterns, key tradeoffs — with reasoning.</span>
+      </div>
+      <div class="principle">
+        <strong>Task breakdown</strong>
+        <span>Ordered list of build steps, each small enough to complete in one session.</span>
+      </div>
+      <div class="principle">
+        <strong>Checkpoint definition</strong>
+        <span>Where human decisions are needed during the build.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Output</div>
+    <p>
+      A spec package that can be handed to Claude (or any AI coding assistant) with minimal back-and-forth:
+    </p>
+    <ul class="output-list">
+      <li>Scope doc with clear boundaries</li>
+      <li>Technical architecture decisions</li>
+      <li>Ordered task list</li>
+      <li>Human checkpoint schedule</li>
+      <li>Success criteria from Decision Framework</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-label">Status</div>
+    <div class="status-detail">
+      <p><strong>Current:</strong> Planned. Waiting for Decision Framework to stabilize.</p>
+      <p><strong>Dependency:</strong> Needs validated Decision Framework outputs as input.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Related</div>
+    <p>
+      <a href="/projects/toolshed/decision-framework">Decision Framework</a> — Provides the validated idea that this component specs out.
+    </p>
+    <p>
+      <a href="/projects/toolshed/human-checkpoints">Human Checkpoints</a> — Consumes the checkpoint schedule this component generates.
+    </p>
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

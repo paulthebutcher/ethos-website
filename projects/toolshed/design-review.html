@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Review — The Toolshed</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/toolshed">toolshed</a>
+    <a href="/projects">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <header>
+    <div class="project-meta">
+      <span class="project-layer">Layer 2: Build Orchestration</span>
+      <span class="project-status planned">planned</span>
+    </div>
+    <h1>Design Review</h1>
+    <p class="page-intro">Visual/UX review workflow with structured feedback capture. Screenshot → feedback → iteration loop.</p>
+  </header>
+
+  <section>
+    <div class="section-label">The problem</div>
+    <p>
+      AI can generate UI code, but visual judgment is still a human skill. The challenge is creating a fast feedback loop that doesn't become a bottleneck.
+    </p>
+    <p>
+      Screenshots alone aren't enough. You need structured feedback that the AI can act on — "make it bigger" isn't useful; "increase header font to 24px and add 16px padding" is.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">The approach</div>
+    <p>
+      An MCP server for visual/UX review:
+    </p>
+    <div class="principles">
+      <div class="principle">
+        <strong>Screenshot capture</strong>
+        <span>Automated screenshots at key UI states.</span>
+      </div>
+      <div class="principle">
+        <strong>Structured feedback</strong>
+        <span>Annotate with specific, actionable changes — not vague impressions.</span>
+      </div>
+      <div class="principle">
+        <strong>Iteration tracking</strong>
+        <span>Version history of visual changes with decision reasoning.</span>
+      </div>
+      <div class="principle">
+        <strong>Pattern library</strong>
+        <span>Capture approved patterns for reuse across builds.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Feedback categories</div>
+    <p>
+      Structured feedback types that AI can act on:
+    </p>
+    <div class="non-negotiables">
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Layout</strong> — Spacing, alignment, hierarchy changes.</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Typography</strong> — Font size, weight, line height adjustments.</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Color</strong> — Specific color changes with hex/HSL values.</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Interaction</strong> — Hover states, transitions, feedback patterns.</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Approve</strong> — Mark as done, capture pattern for reuse.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Status</div>
+    <div class="status-detail">
+      <p><strong>Current:</strong> Planned. Lower priority than core decision/spec flow.</p>
+      <p><strong>Dependency:</strong> Useful once builds reach the UI phase consistently.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Related</div>
+    <p>
+      <a href="/projects/toolshed/human-checkpoints">Human Checkpoints</a> — Design Review is a specialized type of checkpoint.
+    </p>
+    <p>
+      <a href="/projects/toolshed/knowledge-base">Knowledge Base</a> — Approved patterns feed into the Knowledge Base for future builds.
+    </p>
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

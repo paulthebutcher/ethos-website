@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Checkpoints — The Toolshed</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/toolshed">toolshed</a>
+    <a href="/projects">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <header>
+    <div class="project-meta">
+      <span class="project-layer">Layer 2: Build Orchestration</span>
+      <span class="project-status designing">designing</span>
+    </div>
+    <h1>Human Checkpoints</h1>
+    <p class="page-intro">Structured pause points for scope, architecture, and implementation decisions. AI orchestrates; human approves.</p>
+  </header>
+
+  <section>
+    <div class="section-label">The problem</div>
+    <p>
+      AI can generate code faster than humans can review it. But without structured checkpoints, you end up with either constant interruption (slow) or rubber-stamping (dangerous).
+    </p>
+    <p>
+      The goal isn't human approval on every line. It's human judgment on the decisions that matter — and full AI autonomy on everything else.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">The approach</div>
+    <p>
+      An MCP server that manages the checkpoint lifecycle during a build:
+    </p>
+    <div class="principles">
+      <div class="principle">
+        <strong>Checkpoint types</strong>
+        <span>Scope changes, architecture decisions, external integrations, deployment gates.</span>
+      </div>
+      <div class="principle">
+        <strong>Context surfacing</strong>
+        <span>At each checkpoint, surface what changed, why, and what the alternatives were.</span>
+      </div>
+      <div class="principle">
+        <strong>Decision capture</strong>
+        <span>Record the human decision and reasoning — feeds into Knowledge Base.</span>
+      </div>
+      <div class="principle">
+        <strong>Async-friendly</strong>
+        <span>Checkpoints don't block; they queue. Human reviews when ready.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Checkpoint categories</div>
+    <p>
+      Based on early builds, these are the decisions that benefit from human judgment:
+    </p>
+    <div class="non-negotiables">
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Scope creep check</strong> — "This requires adding X. Proceed or defer?"</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Architecture fork</strong> — "Two approaches possible. Here are tradeoffs."</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>External dependency</strong> — "This requires integrating with X. Approve?"</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Breaking assumption</strong> — "Original spec assumed X, but Y is true. Adjust scope?"</span>
+      </div>
+      <div class="non-negotiable">
+        <span class="nn-icon">◆</span>
+        <span class="nn-text"><strong>Ship gate</strong> — "Build complete. Review before deploy?"</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Status</div>
+    <div class="status-detail">
+      <p><strong>Current:</strong> Designing checkpoint taxonomy. Running manually during builds to identify which decisions actually need human input.</p>
+      <p><strong>Learning:</strong> Most builds need 5-10 checkpoints, not 50. The key is identifying which ones.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Related</div>
+    <p>
+      <a href="/projects/toolshed/spec-generator">Spec Generator</a> — Defines checkpoint schedule as part of the spec.
+    </p>
+    <p>
+      <a href="/projects/toolshed/design-review">Design Review</a> — Specialized checkpoint for visual/UX decisions.
+    </p>
+    <p>
+      <a href="/projects/toolshed/knowledge-base">Knowledge Base</a> — Captures checkpoint decisions for future reference.
+    </p>
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

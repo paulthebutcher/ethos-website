@@ -882,3 +882,543 @@ footer a:hover {
   transform: translateY(-2px);
 }
 
+/* ========================================
+   TOOLSHED ARCHITECTURE STYLES
+   ======================================== */
+
+/* Architecture layers */
+.architecture-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.architecture-layer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.layer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  background: var(--bg-secondary);
+}
+
+.layer-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.layer-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.layer-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+.layer-components {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.component-card {
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  text-decoration: none;
+  display: block;
+  transition: all var(--duration-fast);
+}
+
+.component-card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-tertiary);
+}
+
+.component-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.component-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.component-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.component-status.designing {
+  color: var(--signal-amber);
+  background: var(--bg-signal-soft);
+}
+.component-status.planned {
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+}
+.component-status.building {
+  color: var(--signal-green);
+  background: rgba(78, 138, 71, 0.1);
+}
+.component-status.live {
+  color: var(--accent);
+  background: var(--bg-accent-soft);
+}
+
+/* Human checkpoint highlight */
+.human-checkpoint {
+  border-left: 3px solid var(--signal-amber);
+}
+
+/* Compound layer special styling */
+.compound-layer {
+  border-color: var(--accent-dim);
+  background: var(--bg-accent-soft);
+}
+
+.compound-layer .layer-header {
+  background: transparent;
+  border-bottom-color: var(--border-accent);
+}
+
+/* Parts list */
+.parts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.part-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.part-item:hover {
+  border-color: var(--border-active);
+}
+
+.part-category {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  min-width: 80px;
+}
+
+.part-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  min-width: 180px;
+}
+
+.part-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+/* Weekly builds grid */
+.builds-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.build-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all var(--duration-fast);
+}
+
+.build-item:hover {
+  border-color: var(--border-active);
+  transform: translateY(-1px);
+}
+
+.build-item.current {
+  border-left: 3px solid var(--accent);
+}
+
+.build-week-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-dim);
+  min-width: 48px;
+}
+
+.build-info {
+  flex: 1;
+}
+
+.build-info .build-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.build-info .build-tests {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.build-dates {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* Human non-negotiables list */
+.non-negotiables {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.non-negotiable {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--signal-amber);
+  border-radius: 6px;
+}
+
+.non-negotiable-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--signal-amber);
+  min-width: 24px;
+}
+
+.non-negotiable-content strong {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.non-negotiable-content span {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Moat callout */
+.moat-callout {
+  background: var(--bg-accent-soft);
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 32px 0;
+}
+
+.moat-callout .callout-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.moat-callout p {
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+/* Project type badges */
+.project-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.project-type.toolshed {
+  color: var(--accent);
+  background: var(--bg-accent-soft);
+  border: 1px solid var(--border-accent);
+}
+
+.project-type.weekly {
+  color: var(--signal-green);
+  background: rgba(78, 138, 71, 0.1);
+  border: 1px solid rgba(78, 138, 71, 0.3);
+}
+
+.project-type.archive {
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+/* Layer name (alias for layer-title) */
+.layer-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Layer explanation paragraph */
+.layer-explanation {
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Human checkpoint within layers */
+.architecture-layer .human-checkpoint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--bg-signal-soft);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.checkpoint-icon {
+  color: var(--signal-amber);
+  font-size: 10px;
+}
+
+.checkpoint-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Non-negotiable diamond icons */
+.nn-icon {
+  color: var(--signal-amber);
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.nn-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.nn-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Output/feature list */
+.output-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.output-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.output-list li::before {
+  content: '·';
+  position: absolute;
+  left: 6px;
+  color: var(--accent-dim);
+  font-weight: bold;
+}
+
+/* Project layer indicator */
+.project-layer {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Status detail block */
+.status-detail {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.status-detail p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.status-detail p:last-child {
+  margin-bottom: 0;
+}
+
+/* Architecture link */
+.architecture-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.architecture-link:hover {
+  color: var(--accent);
+}
+
+/* Section intro text */
+.section-intro {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Queue note */
+.queue-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 8px 0 0 0;
+}
+
+/* Project type headers in projects page */
+section > .project-type {
+  display: block;
+  margin: 24px 0 12px 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+section > .project-type:first-of-type {
+  margin-top: 0;
+}
+
+/* Compound project card */
+.project-card.compound {
+  border-color: var(--border-accent);
+  background: var(--bg-accent-soft);
+}
+
+.project-card.compound:hover {
+  border-color: var(--accent);
+}
+
+/* Responsive adjustments for new components */
+@media (max-width: 600px) {
+  .layer-components {
+    grid-template-columns: 1fr;
+  }
+
+  .layer-header {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  .layer-desc {
+    margin-left: 0;
+    margin-top: 4px;
+  }
+
+  .part-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .part-category,
+  .part-name {
+    min-width: auto;
+  }
+
+  .build-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .build-dates {
+    text-align: left;
+  }
+
+  .non-negotiable {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .architecture-layer .human-checkpoint {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+

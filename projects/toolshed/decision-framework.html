@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Framework — The Toolshed</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-home">ai<span>·</span>ethos</a>
+    <a href="/toolshed">toolshed</a>
+    <a href="/projects">projects</a>
+    <a href="/log">log</a>
+  </nav>
+
+  <header>
+    <div class="project-meta">
+      <span class="project-layer">Layer 1: Pre-Build Intelligence</span>
+      <span class="project-status designing">designing</span>
+    </div>
+    <h1>Decision Framework</h1>
+    <p class="page-intro">Structured decision trees for go/no-go, scope, and positioning. Turns fuzzy ideas into clear build-or-kill decisions.</p>
+  </header>
+
+  <section>
+    <div class="section-label">The problem</div>
+    <p>
+      Most failed builds fail before code starts. The idea was wrong, the market was wrong, or the scope was wrong. But we usually don't discover this until we've invested significant build time.
+    </p>
+    <p>
+      Ad-hoc thinking doesn't catch these issues reliably. You need structured questions that force clarity — and a process that makes "no" a valid output.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">The approach</div>
+    <p>
+      An MCP server that walks through a decision tree for any new idea:
+    </p>
+    <div class="principles">
+      <div class="principle">
+        <strong>Problem validation</strong>
+        <span>Is this a real problem? Who has it? How do they solve it today?</span>
+      </div>
+      <div class="principle">
+        <strong>Market assessment</strong>
+        <span>Is this a market I can reach? Is it big enough? Is it growing?</span>
+      </div>
+      <div class="principle">
+        <strong>Competitive landscape</strong>
+        <span>Who else is solving this? What's my angle?</span>
+      </div>
+      <div class="principle">
+        <strong>Build feasibility</strong>
+        <span>Can I build this in a week? What's the minimum testable version?</span>
+      </div>
+      <div class="principle">
+        <strong>Signal clarity</strong>
+        <span>What would success look like? How would I know to kill it?</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Output</div>
+    <p>
+      A structured decision document with:
+    </p>
+    <ul class="output-list">
+      <li>Go/no-go recommendation with reasoning</li>
+      <li>Key risks and unknowns</li>
+      <li>Suggested scope for v1</li>
+      <li>Success/failure criteria</li>
+    </ul>
+    <p>
+      Human makes the final call. The framework provides structure, not answers.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">Status</div>
+    <div class="status-detail">
+      <p><strong>Current:</strong> Designing the decision tree structure. Running it manually on each new idea to validate the questions.</p>
+      <p><strong>Next:</strong> Formalize as MCP server once the manual process stabilizes.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Related</div>
+    <p>
+      <a href="/projects/toolshed/spec-generator">Spec Generator</a> — Takes validated ideas from this framework and turns them into build-ready specs.
+    </p>
+    <p>
+      <a href="/projects/reddit-problem-signal-miner">Reddit Problem Signal Miner</a> — Week 1 build testing problem discovery, which feeds into this framework.
+    </p>
+  </section>
+
+  <footer>
+    <span>Paul B. · solo AI product incubator</span>
+    <a href="https://paulb.pro">paulb.pro</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
