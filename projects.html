@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — ai·ethos</title>
-<meta name="description" content="The Toolshed components and weekly build experiments. MCP servers that orchestrate the build lifecycle, validated through real products.">
+<meta name="description" content="26 Toolshed components and weekly build experiments. MCP servers that orchestrate the build lifecycle, validated through real products.">
 <meta property="og:title" content="Projects — ai·ethos">
 <meta property="og:description" content="Toolshed components and weekly build experiments from the AI product incubator.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -26,22 +26,58 @@
 
   <header>
     <h1>Projects</h1>
-    <p class="page-intro">Two tracks: <strong>Toolshed components</strong> are the MCP servers that form the build system. <strong>Weekly builds</strong> are the experiments that validate them.</p>
+    <p class="page-intro">Two tracks: <strong>26 Toolshed components</strong> are the MCP servers that form the build system. <strong>Weekly builds</strong> are the experiments that validate them.</p>
   </header>
 
   <!-- Toolshed Components -->
   <section>
     <div class="section-label">Toolshed Components</div>
-    <p class="section-intro">The system that builds products. Each component is an MCP server — composable, agent-ready, designed to compound.</p>
+    <p class="section-intro">The system that builds products. 26 MCP servers across 7 layers — composable, agent-ready, designed to compound. <a href="/toolshed">View full architecture →</a></p>
 
-    <div class="project-type">Layer 1: Pre-Build Intelligence</div>
+    <div class="project-type">Layer 1: Discover</div>
+    <div class="projects-grid">
+      <a href="/projects/toolshed/signal-miner" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Signal Miner</span>
+          <span class="project-status designing">designing</span>
+        </div>
+        <span class="project-desc">Problem discovery from Reddit, Twitter, forums, communities</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/market-scanner" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Market Scanner</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Competitive analysis, market sizing, existing solutions</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/tech-scout" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Tech Scout</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Technical feasibility, API availability, stack options</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+    </div>
+
+    <div class="project-type">Layer 2: Validate</div>
     <div class="projects-grid">
       <a href="/projects/toolshed/decision-framework" class="project-card">
         <div class="project-header">
           <span class="project-name">Decision Framework</span>
           <span class="project-status designing">designing</span>
         </div>
-        <span class="project-desc">Structured decision trees for go/no-go, scope, and positioning. Turns fuzzy ideas into clear build-or-kill decisions.</span>
+        <span class="project-desc">Structured go/no-go decisions with evidence requirements</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/scope-definer" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Scope Definer</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">What's in v1, what's deferred, what's explicitly cut</span>
         <span class="project-arrow">→ view component</span>
       </a>
       <a href="/projects/toolshed/spec-generator" class="project-card">
@@ -49,19 +85,79 @@
           <span class="project-name">Spec Generator</span>
           <span class="project-status planned">planned</span>
         </div>
-        <span class="project-desc">Turns validated ideas into build-ready specifications. Outputs scope doc, tech decisions, and task breakdown.</span>
+        <span class="project-desc">Requirements, user stories, acceptance criteria</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/architecture-planner" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Architecture Planner</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Tech stack, data models, API design, security approach</span>
         <span class="project-arrow">→ view component</span>
       </a>
     </div>
 
-    <div class="project-type">Layer 2: Build Orchestration</div>
+    <div class="project-type">Layer 3: Build</div>
     <div class="projects-grid">
+      <a href="/projects/toolshed/repo-scaffold" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Repo Scaffold</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Project structure, dependencies, configs, CI setup</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/code-orchestrator" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Code Orchestrator</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">AI code generation coordination, task sequencing</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/asset-generator" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Asset Generator</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Images, icons, copy, marketing content</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/docs-generator" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Docs Generator</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">README, API docs, user guides, changelogs</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
       <a href="/projects/toolshed/human-checkpoints" class="project-card">
         <div class="project-header">
           <span class="project-name">Human Checkpoints</span>
           <span class="project-status designing">designing</span>
         </div>
-        <span class="project-desc">Structured pause points for scope, architecture, and implementation decisions. AI orchestrates; human approves.</span>
+        <span class="project-desc">Structured pause points for scope and architecture decisions</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+    </div>
+
+    <div class="project-type">Layer 4: Quality</div>
+    <div class="projects-grid">
+      <a href="/projects/toolshed/test-runner" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Test Runner</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Automated testing coordination, coverage tracking</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/security-scanner" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Security Scanner</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Vulnerability checks, auth review, data handling audit</span>
         <span class="project-arrow">→ view component</span>
       </a>
       <a href="/projects/toolshed/design-review" class="project-card">
@@ -69,19 +165,79 @@
           <span class="project-name">Design Review</span>
           <span class="project-status planned">planned</span>
         </div>
-        <span class="project-desc">Visual/UX review workflow with structured feedback capture. Screenshot → feedback → iteration loop.</span>
+        <span class="project-desc">Visual/UX approval workflow with structured feedback</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/accessibility-gate" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Accessibility Gate</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">A11y compliance checks, WCAG validation</span>
         <span class="project-arrow">→ view component</span>
       </a>
     </div>
 
-    <div class="project-type">Layer 3: Launch & Validate</div>
+    <div class="project-type">Layer 5: Ship</div>
     <div class="projects-grid">
+      <a href="/projects/toolshed/deploy-pipeline" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Deploy Pipeline</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">CI/CD automation, environments, migrations, rollback</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/launch-coordinator" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Launch Coordinator</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Distribution channels, initial exposure, landing pages</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/analytics-setup" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Analytics Setup</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Tracking implementation, monitoring, alerting</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+    </div>
+
+    <div class="project-type">Layer 6: Measure</div>
+    <div class="projects-grid">
+      <a href="/projects/toolshed/signal-tracker" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Signal Tracker</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Metrics aggregation, funnel analysis, revenue tracking</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/feedback-collector" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Feedback Collector</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">User feedback aggregation, support tickets, reviews</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/health-monitor" class="project-card">
+        <div class="project-header">
+          <span class="project-name">Health Monitor</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Error tracking, performance monitoring, uptime</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
       <a href="/projects/toolshed/portfolio-framework" class="project-card">
         <div class="project-header">
           <span class="project-name">Portfolio Framework</span>
           <span class="project-status planned">planned</span>
         </div>
-        <span class="project-desc">Dashboard for tracking products, signals, and graduation decisions. Kill/continue/pivot structured as a process.</span>
+        <span class="project-desc">Kill/continue/pivot decisions, graduation criteria</span>
         <span class="project-arrow">→ view component</span>
       </a>
     </div>
@@ -93,7 +249,23 @@
           <span class="project-name">Knowledge Base MCP</span>
           <span class="project-status designing">designing</span>
         </div>
-        <span class="project-desc">The moat. Structured learnings from every build — what worked, what failed, what signals mattered. Queryable by AI and humans.</span>
+        <span class="project-desc">Structured learnings from every build, queryable by AI and humans</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/pattern-library" class="project-card compound">
+        <div class="project-header">
+          <span class="project-name">Pattern Library</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">Reusable code, design systems, copy templates</span>
+        <span class="project-arrow">→ view component</span>
+      </a>
+      <a href="/projects/toolshed/context-sync" class="project-card compound">
+        <div class="project-header">
+          <span class="project-name">Context Sync</span>
+          <span class="project-status planned">planned</span>
+        </div>
+        <span class="project-desc">State management across all tools, current build awareness</span>
         <span class="project-arrow">→ view component</span>
       </a>
     </div>
@@ -111,7 +283,7 @@
           <span class="project-name">Reddit Problem Signal Miner</span>
           <span class="project-status active">week 1</span>
         </div>
-        <span class="project-desc">Stop wasting 30 hours on Reddit—get structured problem signals from 5 startup communities, extracted and scored by AI. <em>Tests: can AI extract actionable problem signals?</em></span>
+        <span class="project-desc">Stop wasting 30 hours on Reddit—get structured problem signals from 5 startup communities, extracted and scored by AI. <em>Tests: Signal Miner component</em></span>
         <span class="project-arrow">→ view project</span>
       </a>
     </div>

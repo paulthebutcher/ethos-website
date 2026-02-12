@@ -63,83 +63,117 @@
   <!-- The Toolshed architecture -->
   <section>
     <div class="section-label">The Toolshed</div>
+    <p class="section-intro">26 MCP components across 7 layers. Full lifecycle from signal to scale.</p>
     <div class="architecture-layers">
 
-      <div class="architecture-layer">
+      <a href="/toolshed#discover" class="architecture-layer layer-summary">
         <div class="layer-header">
-          <span class="layer-name">Layer 1: Pre-Build Intelligence</span>
-          <span class="layer-desc">Validate before building</span>
+          <span class="layer-name">1. Discover</span>
+          <span class="layer-desc">Find opportunities</span>
         </div>
-        <div class="layer-components">
-          <a href="/projects/toolshed/decision-framework" class="component-card">
-            <span class="component-name">Decision Framework</span>
-            <span class="component-status designing">designing</span>
-          </a>
-          <a href="/projects/toolshed/spec-generator" class="component-card">
-            <span class="component-name">Spec Generator</span>
-            <span class="component-status planned">planned</span>
-          </a>
+        <div class="layer-components-summary">
+          <span>Signal Miner</span>
+          <span>Market Scanner</span>
+          <span>Tech Scout</span>
+        </div>
+      </a>
+
+      <a href="/toolshed#validate" class="architecture-layer layer-summary">
+        <div class="layer-header">
+          <span class="layer-name">2. Validate</span>
+          <span class="layer-desc">Decide what to build</span>
+        </div>
+        <div class="layer-components-summary">
+          <span>Decision Framework</span>
+          <span>Scope Definer</span>
+          <span>Spec Generator</span>
+          <span>Architecture Planner</span>
         </div>
         <div class="human-checkpoint">
           <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: Go/no-go decision on each idea</span>
+          <span class="checkpoint-text">Human checkpoint: Go/no-go</span>
         </div>
-      </div>
+      </a>
 
-      <div class="architecture-layer">
+      <a href="/toolshed#build" class="architecture-layer layer-summary">
         <div class="layer-header">
-          <span class="layer-name">Layer 2: Build Orchestration</span>
-          <span class="layer-desc">AI builds, human validates</span>
+          <span class="layer-name">3. Build</span>
+          <span class="layer-desc">Create the product</span>
         </div>
-        <div class="layer-components">
-          <a href="/projects/toolshed/human-checkpoints" class="component-card">
-            <span class="component-name">Human Checkpoints</span>
-            <span class="component-status designing">designing</span>
-          </a>
-          <a href="/projects/toolshed/design-review" class="component-card">
-            <span class="component-name">Design Review</span>
-            <span class="component-status planned">planned</span>
-          </a>
+        <div class="layer-components-summary">
+          <span>Repo Scaffold</span>
+          <span>Code Orchestrator</span>
+          <span>Asset Generator</span>
+          <span>Docs Generator</span>
+          <span>Human Checkpoints</span>
         </div>
         <div class="human-checkpoint">
           <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: 5-10 micro-decisions per build</span>
+          <span class="checkpoint-text">Human checkpoint: Scope + architecture decisions</span>
         </div>
-      </div>
+      </a>
 
-      <div class="architecture-layer">
+      <a href="/toolshed#quality" class="architecture-layer layer-summary">
         <div class="layer-header">
-          <span class="layer-name">Layer 3: Launch & Validate</span>
-          <span class="layer-desc">Ship and measure signal</span>
+          <span class="layer-name">4. Quality</span>
+          <span class="layer-desc">Ensure it works</span>
         </div>
-        <div class="layer-components">
-          <a href="/projects/toolshed/portfolio-framework" class="component-card">
-            <span class="component-name">Portfolio Framework</span>
-            <span class="component-status planned">planned</span>
-          </a>
+        <div class="layer-components-summary">
+          <span>Test Runner</span>
+          <span>Security Scanner</span>
+          <span>Design Review</span>
+          <span>Accessibility Gate</span>
         </div>
         <div class="human-checkpoint">
           <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: Kill/continue/pivot decisions</span>
+          <span class="checkpoint-text">Human checkpoint: Ship decision</span>
         </div>
-      </div>
+      </a>
 
-      <div class="architecture-layer compound-layer">
+      <a href="/toolshed#ship" class="architecture-layer layer-summary">
+        <div class="layer-header">
+          <span class="layer-name">5. Ship</span>
+          <span class="layer-desc">Get it live</span>
+        </div>
+        <div class="layer-components-summary">
+          <span>Deploy Pipeline</span>
+          <span>Launch Coordinator</span>
+          <span>Analytics Setup</span>
+        </div>
+      </a>
+
+      <a href="/toolshed#measure" class="architecture-layer layer-summary">
+        <div class="layer-header">
+          <span class="layer-name">6. Measure</span>
+          <span class="layer-desc">Learn from results</span>
+        </div>
+        <div class="layer-components-summary">
+          <span>Signal Tracker</span>
+          <span>Feedback Collector</span>
+          <span>Health Monitor</span>
+          <span>Portfolio Framework</span>
+        </div>
+        <div class="human-checkpoint">
+          <span class="checkpoint-icon">◆</span>
+          <span class="checkpoint-text">Human checkpoint: Kill/continue/pivot</span>
+        </div>
+      </a>
+
+      <a href="/toolshed#compound" class="architecture-layer compound-layer layer-summary">
         <div class="layer-header">
           <span class="layer-name">The Compound Layer</span>
           <span class="layer-desc">The moat that grows</span>
         </div>
-        <div class="layer-components">
-          <a href="/projects/toolshed/knowledge-base" class="component-card">
-            <span class="component-name">Knowledge Base MCP</span>
-            <span class="component-status designing">designing</span>
-          </a>
+        <div class="layer-components-summary">
+          <span>Knowledge Base MCP</span>
+          <span>Pattern Library</span>
+          <span>Context Sync</span>
         </div>
-      </div>
+      </a>
 
     </div>
 
-    <a href="/toolshed" class="architecture-link">View full architecture →</a>
+    <a href="/toolshed" class="architecture-link">View full architecture with all 26 components →</a>
   </section>
 
   <!-- The moat -->

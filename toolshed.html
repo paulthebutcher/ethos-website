@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Toolshed — ai·ethos</title>
-<meta name="description" content="Architecture deep-dive: an MCP-first platform where the system that builds products is the product.">
+<title>The Toolshed Architecture — ai·ethos</title>
+<meta name="description" content="26 MCP components across 7 layers. Full lifecycle from signal to scale.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
@@ -23,123 +23,275 @@
 
   <header>
     <h1>The Toolshed</h1>
-    <p class="page-intro">An MCP-first platform where the system that builds products is the product. Each component is a Model Context Protocol server — composable, agent-ready, and designed to compound.</p>
+    <p class="page-intro">26 MCP components across 7 layers. Full lifecycle from discovering opportunities to measuring results — with human checkpoints at every critical decision point.</p>
   </header>
 
-  <!-- The core insight -->
+  <!-- Core insight -->
   <section>
-    <div class="section-label">The core insight</div>
+    <div class="section-label">The insight</div>
     <p>
       Most solo builders optimize for shipping products. But products are one-off bets. The real leverage comes from building the system that makes those bets — and making that system smarter with every build.
     </p>
     <p>
-      The Toolshed is that system. It's not a monolithic app. It's a collection of MCP servers that orchestrate the entire build lifecycle: from validating ideas, through AI-assisted development, to post-launch decisions. Each server is independently useful, but together they form a compound asset.
-    </p>
-    <p>
-      The weekly products are validation experiments. They generate revenue signals and learning data. But the real value accumulates in the Knowledge Base — a structured record of every decision, every pivot, every lesson that makes the next build faster and smarter.
+      The Toolshed is that system. Each component is an MCP server — composable, agent-ready, and designed to feed learnings back into the Knowledge Base. The weekly products are validation experiments. The compound asset grows underneath.
     </p>
   </section>
 
-  <!-- Architecture overview -->
-  <section>
-    <div class="section-label">Architecture</div>
-
-    <div class="architecture-layers">
-
-      <!-- Layer 1: Pre-Build Intelligence -->
-      <div class="architecture-layer">
-        <div class="layer-header">
-          <span class="layer-name">Layer 1: Pre-Build Intelligence</span>
-          <span class="layer-desc">Validate before building</span>
-        </div>
-        <p class="layer-explanation">
-          Most failed builds fail before code starts — wrong problem, wrong market, wrong scope. This layer stress-tests ideas before committing build time.
-        </p>
-        <div class="layer-components">
-          <a href="/projects/toolshed/decision-framework" class="component-card">
-            <span class="component-name">Decision Framework</span>
-            <span class="component-status designing">designing</span>
-            <span class="component-desc">Structured decision trees for go/no-go, scope, and positioning</span>
-          </a>
-          <a href="/projects/toolshed/spec-generator" class="component-card">
-            <span class="component-name">Spec Generator</span>
-            <span class="component-status planned">planned</span>
-            <span class="component-desc">Turns validated ideas into build-ready specifications</span>
-          </a>
-        </div>
-        <div class="human-checkpoint">
-          <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: Go/no-go decision on each idea</span>
-        </div>
+  <!-- Layer 1: Discover -->
+  <section id="discover">
+    <div class="section-label">Layer 1</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Discover</span>
+        <span class="layer-desc">Find opportunities worth pursuing</span>
       </div>
-
-      <!-- Layer 2: Build Orchestration -->
-      <div class="architecture-layer">
-        <div class="layer-header">
-          <span class="layer-name">Layer 2: Build Orchestration</span>
-          <span class="layer-desc">AI builds, human validates</span>
-        </div>
-        <p class="layer-explanation">
-          AI can generate code, but judgment calls need human oversight. This layer orchestrates the build process with structured checkpoints for human decisions.
-        </p>
-        <div class="layer-components">
-          <a href="/projects/toolshed/human-checkpoints" class="component-card">
-            <span class="component-name">Human Checkpoints</span>
-            <span class="component-status designing">designing</span>
-            <span class="component-desc">Structured pause points for scope, architecture, and implementation decisions</span>
-          </a>
-          <a href="/projects/toolshed/design-review" class="component-card">
-            <span class="component-name">Design Review</span>
-            <span class="component-status planned">planned</span>
-            <span class="component-desc">Visual/UX review workflow with structured feedback capture</span>
-          </a>
-        </div>
-        <div class="human-checkpoint">
-          <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: 5-10 micro-decisions per build</span>
-        </div>
+      <p class="layer-explanation">
+        Before validating ideas, you need to find them. This layer surfaces problems from communities, analyzes markets, and assesses technical feasibility.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/signal-miner" class="component-card">
+          <span class="component-name">Signal Miner</span>
+          <span class="component-desc">Problem discovery from Reddit, Twitter, forums, communities</span>
+          <span class="component-status designing">designing</span>
+        </a>
+        <a href="/projects/toolshed/market-scanner" class="component-card">
+          <span class="component-name">Market Scanner</span>
+          <span class="component-desc">Competitive analysis, market sizing, existing solutions</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/tech-scout" class="component-card">
+          <span class="component-name">Tech Scout</span>
+          <span class="component-desc">Technical feasibility, API availability, stack options</span>
+          <span class="component-status planned">planned</span>
+        </a>
       </div>
+    </div>
+  </section>
 
-      <!-- Layer 3: Launch & Validate -->
-      <div class="architecture-layer">
-        <div class="layer-header">
-          <span class="layer-name">Layer 3: Launch & Validate</span>
-          <span class="layer-desc">Ship and measure signal</span>
-        </div>
-        <p class="layer-explanation">
-          Shipping is the beginning, not the end. This layer tracks what matters after launch and structures the kill/continue/pivot decision.
-        </p>
-        <div class="layer-components">
-          <a href="/projects/toolshed/portfolio-framework" class="component-card">
-            <span class="component-name">Portfolio Framework</span>
-            <span class="component-status planned">planned</span>
-            <span class="component-desc">Dashboard for tracking products, signals, and graduation decisions</span>
-          </a>
-        </div>
-        <div class="human-checkpoint">
-          <span class="checkpoint-icon">◆</span>
-          <span class="checkpoint-text">Human checkpoint: Kill/continue/pivot decisions</span>
-        </div>
+  <!-- Layer 2: Validate -->
+  <section id="validate">
+    <div class="section-label">Layer 2</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Validate</span>
+        <span class="layer-desc">Decide what to build</span>
       </div>
-
-      <!-- The Compound Layer -->
-      <div class="architecture-layer compound-layer">
-        <div class="layer-header">
-          <span class="layer-name">The Compound Layer</span>
-          <span class="layer-desc">The moat that grows</span>
-        </div>
-        <p class="layer-explanation">
-          Every other layer feeds into this one. The Knowledge Base captures what worked, what failed, and why — creating a compound asset that makes every future build better.
-        </p>
-        <div class="layer-components">
-          <a href="/projects/toolshed/knowledge-base" class="component-card">
-            <span class="component-name">Knowledge Base MCP</span>
-            <span class="component-status designing">designing</span>
-            <span class="component-desc">Structured learnings from every build, queryable by AI and humans</span>
-          </a>
-        </div>
+      <p class="layer-explanation">
+        Most failed builds fail before code starts — wrong problem, wrong market, wrong scope. This layer turns fuzzy ideas into clear build-or-kill decisions and build-ready specifications.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/decision-framework" class="component-card">
+          <span class="component-name">Decision Framework</span>
+          <span class="component-desc">Structured go/no-go decisions with evidence requirements</span>
+          <span class="component-status designing">designing</span>
+        </a>
+        <a href="/projects/toolshed/scope-definer" class="component-card">
+          <span class="component-name">Scope Definer</span>
+          <span class="component-desc">What's in v1, what's deferred, what's explicitly cut</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/spec-generator" class="component-card">
+          <span class="component-name">Spec Generator</span>
+          <span class="component-desc">Requirements, user stories, acceptance criteria</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/architecture-planner" class="component-card">
+          <span class="component-name">Architecture Planner</span>
+          <span class="component-desc">Tech stack, data models, API design, security approach</span>
+          <span class="component-status planned">planned</span>
+        </a>
       </div>
+      <div class="human-checkpoint">
+        <span class="checkpoint-icon">◆</span>
+        <span class="checkpoint-text">Human checkpoint: Go/no-go decision — AI provides evidence, human decides</span>
+      </div>
+    </div>
+  </section>
 
+  <!-- Layer 3: Build -->
+  <section id="build">
+    <div class="section-label">Layer 3</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Build</span>
+        <span class="layer-desc">Create the product</span>
+      </div>
+      <p class="layer-explanation">
+        AI generates code, but judgment calls need human oversight. This layer orchestrates the build process with structured checkpoints for scope, architecture, and implementation decisions.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/repo-scaffold" class="component-card">
+          <span class="component-name">Repo Scaffold</span>
+          <span class="component-desc">Project structure, dependencies, configs, CI setup</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/code-orchestrator" class="component-card">
+          <span class="component-name">Code Orchestrator</span>
+          <span class="component-desc">AI code generation coordination, task sequencing</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/asset-generator" class="component-card">
+          <span class="component-name">Asset Generator</span>
+          <span class="component-desc">Images, icons, copy, marketing content</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/docs-generator" class="component-card">
+          <span class="component-name">Docs Generator</span>
+          <span class="component-desc">README, API docs, user guides, changelogs</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/human-checkpoints" class="component-card">
+          <span class="component-name">Human Checkpoints</span>
+          <span class="component-desc">Structured pause points for scope and architecture decisions</span>
+          <span class="component-status designing">designing</span>
+        </a>
+      </div>
+      <div class="human-checkpoint">
+        <span class="checkpoint-icon">◆</span>
+        <span class="checkpoint-text">Human checkpoint: 5-10 micro-decisions per build — scope changes, architecture forks, breaking assumptions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layer 4: Quality -->
+  <section id="quality">
+    <div class="section-label">Layer 4</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Quality</span>
+        <span class="layer-desc">Ensure it works</span>
+      </div>
+      <p class="layer-explanation">
+        Before shipping, verify the build meets quality standards. Automated testing, security scanning, design review, and accessibility checks.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/test-runner" class="component-card">
+          <span class="component-name">Test Runner</span>
+          <span class="component-desc">Automated testing coordination, coverage tracking</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/security-scanner" class="component-card">
+          <span class="component-name">Security Scanner</span>
+          <span class="component-desc">Vulnerability checks, auth review, data handling audit</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/design-review" class="component-card">
+          <span class="component-name">Design Review</span>
+          <span class="component-desc">Visual/UX approval workflow with structured feedback</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/accessibility-gate" class="component-card">
+          <span class="component-name">Accessibility Gate</span>
+          <span class="component-desc">A11y compliance checks, WCAG validation</span>
+          <span class="component-status planned">planned</span>
+        </a>
+      </div>
+      <div class="human-checkpoint">
+        <span class="checkpoint-icon">◆</span>
+        <span class="checkpoint-text">Human checkpoint: Ship decision — ready or not ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layer 5: Ship -->
+  <section id="ship">
+    <div class="section-label">Layer 5</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Ship</span>
+        <span class="layer-desc">Get it live</span>
+      </div>
+      <p class="layer-explanation">
+        Deploy to production, set up distribution channels, and prepare for initial exposure. Shipping is the beginning, not the end.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/deploy-pipeline" class="component-card">
+          <span class="component-name">Deploy Pipeline</span>
+          <span class="component-desc">CI/CD automation, environments, migrations, rollback</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/launch-coordinator" class="component-card">
+          <span class="component-name">Launch Coordinator</span>
+          <span class="component-desc">Distribution channels, initial exposure, landing pages</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/analytics-setup" class="component-card">
+          <span class="component-name">Analytics Setup</span>
+          <span class="component-desc">Tracking implementation, monitoring, alerting</span>
+          <span class="component-status planned">planned</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layer 6: Measure -->
+  <section id="measure">
+    <div class="section-label">Layer 6</div>
+    <div class="architecture-layer">
+      <div class="layer-header">
+        <span class="layer-name">Measure</span>
+        <span class="layer-desc">Learn from results</span>
+      </div>
+      <p class="layer-explanation">
+        After launch, track what matters and make the kill/continue/pivot decision. Revenue is the only reliable signal — everything else is theater.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/signal-tracker" class="component-card">
+          <span class="component-name">Signal Tracker</span>
+          <span class="component-desc">Metrics aggregation, funnel analysis, revenue tracking</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/feedback-collector" class="component-card">
+          <span class="component-name">Feedback Collector</span>
+          <span class="component-desc">User feedback aggregation, support tickets, reviews</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/health-monitor" class="component-card">
+          <span class="component-name">Health Monitor</span>
+          <span class="component-desc">Error tracking, performance monitoring, uptime</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/portfolio-framework" class="component-card">
+          <span class="component-name">Portfolio Framework</span>
+          <span class="component-desc">Kill/continue/pivot decisions, graduation criteria</span>
+          <span class="component-status planned">planned</span>
+        </a>
+      </div>
+      <div class="human-checkpoint">
+        <span class="checkpoint-icon">◆</span>
+        <span class="checkpoint-text">Human checkpoint: Kill/continue/pivot — AI tracks signals, human decides fate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Compound Layer -->
+  <section id="compound">
+    <div class="section-label">The Compound Layer</div>
+    <div class="architecture-layer compound-layer">
+      <div class="layer-header">
+        <span class="layer-name">The Moat</span>
+        <span class="layer-desc">Gets smarter with every build</span>
+      </div>
+      <p class="layer-explanation">
+        Every other layer feeds into this one. The Knowledge Base captures what worked, what failed, and why — creating a compound asset that makes every future build systematically better.
+      </p>
+      <div class="layer-components">
+        <a href="/projects/toolshed/knowledge-base" class="component-card">
+          <span class="component-name">Knowledge Base MCP</span>
+          <span class="component-desc">Structured learnings from every build, queryable by AI and humans</span>
+          <span class="component-status designing">designing</span>
+        </a>
+        <a href="/projects/toolshed/pattern-library" class="component-card">
+          <span class="component-name">Pattern Library</span>
+          <span class="component-desc">Reusable code, design systems, copy templates</span>
+          <span class="component-status planned">planned</span>
+        </a>
+        <a href="/projects/toolshed/context-sync" class="component-card">
+          <span class="component-name">Context Sync</span>
+          <span class="component-desc">State management across all tools, current build awareness</span>
+          <span class="component-status planned">planned</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -152,7 +304,7 @@
     <div class="principles">
       <div class="principle">
         <strong>Composable</strong>
-        <span>Mix and match components. Use the Decision Framework without the Spec Generator. Swap implementations.</span>
+        <span>Mix and match components. Use Signal Miner without Market Scanner. Swap implementations.</span>
       </div>
       <div class="principle">
         <strong>Agent-ready</strong>
@@ -203,6 +355,29 @@
     </div>
   </section>
 
+  <!-- Stats -->
+  <section>
+    <div class="section-label">By the numbers</div>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-num">26</span>
+        <span class="stat-label">MCP components</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">layers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">6</span>
+        <span class="stat-label">human checkpoints</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">compound moat</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Current state -->
   <section>
     <div class="section-label">Current state</div>
@@ -215,7 +390,7 @@
         <span class="build-week">feb 10-13</span>
       </div>
       <p class="build-desc">
-        Tests whether AI can extract actionable problem signals from Reddit communities. Validates the "problem discovery" piece of Layer 1. <a href="/projects/reddit-problem-signal-miner">View project →</a>
+        Tests whether AI can extract actionable problem signals from Reddit communities. Validates the Signal Miner component in Layer 1. <a href="/projects/reddit-problem-signal-miner">View project →</a>
       </p>
     </div>
   </section>
