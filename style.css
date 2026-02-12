@@ -467,6 +467,26 @@ a:hover { color: var(--text-primary); }
   color: var(--signal-amber);
 }
 
+.build-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.build-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.build-links a:hover {
+  color: var(--accent);
+}
+
 /* Principles */
 .principles {
   display: flex;
