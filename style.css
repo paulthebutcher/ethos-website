@@ -1451,6 +1451,44 @@ section > .project-type:first-of-type {
   letter-spacing: 0.06em;
 }
 
+/* Project link cards */
+.project-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.project-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all var(--duration-fast);
+}
+
+.project-link-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.link-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.link-url {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 /* Responsive adjustments for new components */
 @media (max-width: 600px) {
   .stats-grid {
