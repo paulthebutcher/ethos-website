@@ -1,141 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Log — ai·ethos</title>
-<meta name="description" content="Running record of decisions, builds, pivots, and lessons from the AI product incubator.">
+<title>Log — Paul B.</title>
+<meta name="description" content="Working notes from each build week. What happened, what broke, what I'd do differently.">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Log — ai·ethos">
-<meta property="og:description" content="Running record of decisions, builds, pivots, and lessons.">
+<meta property="og:title" content="Log — Paul B.">
+<meta property="og:description" content="Working notes from each build week. What happened, what broke, what I'd do differently.">
 <meta property="og:image" content="https://theaiethos.com/og-image.png">
-<meta property="og:image:width" content="1456">
-<meta property="og:image:height" content="970">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://theaiethos.com/og-image.png">
 
+<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<div class="grain"></div>
-
 <div class="container">
 
   <nav>
-    <a href="/" class="site-home">ai<span>·</span>ethos</a>
-    <a href="/toolshed">toolshed</a>
-    <a href="/projects">projects</a>
-    <a href="/log" class="active">log</a>
+    <a href="/" class="site-name">Paul B.</a>
+    <div class="nav-links">
+      <a href="/toolshed">Toolshed</a>
+      <a href="/log" class="active">Log</a>
+      <a href="/about">About</a>
+    </div>
   </nav>
 
-  <header>
+  <header class="page-header">
     <h1>Log</h1>
-    <p class="page-intro">Running record of decisions, builds, pivots, and lessons. Newest first.</p>
+    <p class="log-intro">Working notes from each build week. What happened, what broke, what I'd do differently.</p>
   </header>
 
-  <section>
-    <div class="log">
+  <div class="log-entries">
 
-      <div class="log-entry">
-        <span class="log-date">11 Feb</span>
-        <span class="log-text">
-          <span class="tag">pivot</span>
-          Major reframe: from "pre-build intelligence pipeline" to "The Toolshed" — an MCP-first platform where the system that builds products is the product. The compound asset is the Knowledge Base MCP, not the individual products. Human checkpoints at decision points, full AI autonomy elsewhere.
-        </span>
+    <!-- Entry template - newest first -->
+    <article class="log-entry">
+      <span class="log-date">Feb 14, 2026</span>
+      <h2 class="log-title">Placeholder: First log entry</h2>
+      <div class="log-content">
+        <p>This is where the first log entry will go. Each entry covers a build week — what happened, what broke, what I'd do differently.</p>
+        <p>Entries are short: a date, a title, 2-4 paragraphs, and an optional link to a project page.</p>
+        <p>No categories. No tags. No sidebar. Just a simple stream of working notes.</p>
       </div>
+      <a href="/toolshed/harness" class="log-link">View project: Harness →</a>
+    </article>
 
-      <div class="log-entry">
-        <span class="log-date">11 Feb</span>
-        <span class="log-text">
-          <span class="tag">architecture</span>
-          Expanded Toolshed to 26 MCP components across 7 layers: Discover (Signal Miner, Market Scanner, Tech Scout), Validate (Decision Framework, Scope Definer, Spec Generator, Architecture Planner), Build (Repo Scaffold, Code Orchestrator, Asset Generator, Docs Generator, Human Checkpoints), Quality (Test Runner, Security Scanner, Design Review, Accessibility Gate), Ship (Deploy Pipeline, Launch Coordinator, Analytics Setup), Measure (Signal Tracker, Feedback Collector, Health Monitor, Portfolio Framework), and The Compound Layer (Knowledge Base MCP, Pattern Library, Context Sync).
-        </span>
-      </div>
+    <!-- Add more entries above this line, newest first -->
 
-      <div class="log-entry">
-        <span class="log-date">10 Feb</span>
-        <span class="log-text">
-          <span class="tag">build</span>
-          Week 1 kickoff: Reddit Problem Signal Miner. Tests whether AI can extract actionable problem signals from startup communities. Validates the "problem discovery" piece of Layer 1.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">09 Feb</span>
-        <span class="log-text">
-          <span class="tag">pivot</span>
-          Scrapped evidence-scoring-layer approach. Research showed cross-engine corroboration is a thin moat and the real bottleneck is idea → spec, not idea → evidence. Reframed as pre-build intelligence system. Running manually before automating.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">09 Feb</span>
-        <span class="log-text">
-          <span class="tag">research</span>
-          Deep dive into academic claim decomposition pipelines (FActScore, VeriScore, SAFE, DecMetrics). Validated that decomposition prompt quality is the bottleneck, not scoring algorithms. VeriScore's sliding window + verifiability filtering is the right starting pattern.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">09 Feb</span>
-        <span class="log-text">
-          <span class="tag">research</span>
-          Competitive landscape analysis: Elicit, Scite, Consensus all academic-focused. Nobody building idea → build-spec pipeline. The evidence layer is commodity; structuring evidence into actionable build plans is the gap.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">08 Feb</span>
-        <span class="log-text">
-          <span class="tag">launchpad</span>
-          Built full Launchpad UI at launchpad.theaiethos.com with dark theme. AI proposal generation: describe idea → get full app config. Proposal editor with tabs, build progress page with SSE streaming. Fixed Clerk middleware, restructured CSS to app-level styling.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">07 Feb</span>
-        <span class="log-text">
-          <span class="tag">guildry</span>
-          Phase 1 complete. Built Blueprint (conversational project scoping), Bench (talent network), Retro (retrospectives). Full MVP loop: Scope → Staff → Deliver → Learn → Improve. All three modules in ~3 hours across 2 sessions — validates 1 MVP/week pace.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">06 Feb</span>
-        <span class="log-text">
-          <span class="tag">ethos</span>
-          Launched standalone ethos site. Built /projects page with status badges, /log page for ongoing documentation. Established weekly log cadence. AI-assisted development is 10-20x faster than traditional estimates — Phase 0 took half a day vs 3 week estimate.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">06 Feb</span>
-        <span class="log-text">
-          <span class="tag">guildry</span>
-          Phase 0 complete. Clerk auth, Supabase with RLS, Claude API integration. AI creates clients via natural conversation. Pivoted from 17-PR waterfall to discovery-first approach — let AI conversations reveal what data matters.
-        </span>
-      </div>
-
-      <div class="log-entry">
-        <span class="log-date">03 Feb</span>
-        <span class="log-text">
-          <span class="tag">context</span>
-          Previous iteration: Plinth as strategic research tool for consultants. Positioning defined but product scope kept expanding. Five build attempts with mixed results — consistent pattern of spec quality being the limiting factor.
-        </span>
-      </div>
-
-    </div>
-  </section>
+  </div>
 
   <footer>
-    <span>Paul B. · solo AI product incubator</span>
-    <a href="https://paulb.pro">paulb.pro</a>
+    <span>© 2026 Paul B.</span>
+    <div class="footer-links">
+      <a href="https://twitter.com/paulthebutcher">Twitter</a>
+      <a href="https://linkedin.com/in/paulthebutcher">LinkedIn</a>
+      <a href="mailto:paul@theaiethos.com">Email</a>
+    </div>
   </footer>
 
 </div>

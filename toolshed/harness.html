@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harness — Toolshed</title>
+<meta name="description" content="Generate AI coding configs that actually make your agent smarter.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Harness — Toolshed">
+<meta property="og:description" content="Generate AI coding configs that actually make your agent smarter.">
+<meta property="og:image" content="https://theaiethos.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://theaiethos.com/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-name">Paul B.</a>
+    <div class="nav-links">
+      <a href="/toolshed" class="active">Toolshed</a>
+      <a href="/log">Log</a>
+      <a href="/about">About</a>
+    </div>
+  </nav>
+
+  <header class="project-page-header">
+    <a href="/toolshed" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 16px; display: inline-block;">← Toolshed</a>
+    <h1>Harness</h1>
+    <p class="project-oneliner">Generate AI coding configs that actually make your agent smarter.</p>
+    <span class="project-status active">Active</span>
+    <div class="project-links">
+      <a href="#">Live URL →</a>
+      <a href="#">GitHub Repo →</a>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('how-it-works')">How It Works</div>
+    <div class="tab" onclick="showTab('friction-log')">Friction Log</div>
+  </div>
+
+  <!-- OVERVIEW TAB -->
+  <div id="overview" class="tab-content active">
+
+    <div class="project-section">
+      <h2>What it does</h2>
+      <p>Describe your project. Get optimized AI coding configs — CLAUDE.md, Cursor rules, AGENTS.md, copilot instructions — plus a scaffolded docs/ directory with intelligent defaults. Drop it in your repo and start building.</p>
+    </div>
+
+    <div class="project-section">
+      <h2>Pricing</h2>
+      <div class="pricing-tiers">
+        <div class="tier">
+          <span class="tier-name">Free</span>
+          <span class="tier-price">$0</span>
+          <p class="tier-desc">Config files only</p>
+        </div>
+        <div class="tier">
+          <span class="tier-name">Full</span>
+          <span class="tier-price">$19</span>
+          <p class="tier-desc">Config files + scaffolded docs + Decisions Made log</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2>The 5 scaffolded docs</h2>
+      <ul>
+        <li><strong>CONTEXT.md</strong> — Orients any AI agent on what this project is and why it exists</li>
+        <li><strong>SCOPE.md</strong> — Locks what's in v1 and what's explicitly deferred</li>
+        <li><strong>DATA_MODEL.md</strong> — Defines core data structures before writing code</li>
+        <li><strong>BUILD_PLAN.md</strong> — Sequences the build to reduce risk</li>
+        <li><strong>FRICTION_LOG.md</strong> — Captures what goes wrong during the build</li>
+      </ul>
+    </div>
+
+    <div class="project-section">
+      <h2>How it's different</h2>
+      <p>Most generators dump 300 lines of rules into a file. Harness allocates a ~100 instruction budget based on your project's risk profile. Includes a Decisions Made log showing what was included, what was excluded, and what was deferred to linters and tooling.</p>
+    </div>
+
+    <div class="project-section">
+      <h3>Build context</h3>
+      <p>Week 2. Feb 16–20, 2026.</p>
+    </div>
+
+  </div>
+
+  <!-- HOW IT WORKS TAB -->
+  <div id="how-it-works" class="tab-content">
+
+    <div class="project-section">
+      <h2>Three steps</h2>
+      <ol>
+        <li><strong>Describe your project</strong> — Answer a few questions about what you're building, the stack, and your constraints.</li>
+        <li><strong>Generate your harness</strong> — AI creates optimized configs based on your project's risk profile.</li>
+        <li><strong>Download and drop into repo</strong> — Unzip into your project root. Start building with smarter AI assistance.</li>
+      </ol>
+    </div>
+
+    <div class="project-section">
+      <h3>Screenshots</h3>
+      <div class="placeholder">Screenshots will be added during the build</div>
+    </div>
+
+    <div class="project-section">
+      <h2>Formats generated</h2>
+      <ul>
+        <li><strong>CLAUDE.md</strong> — Claude Code</li>
+        <li><strong>.cursor/rules/*.mdc</strong> — Cursor</li>
+        <li><strong>AGENTS.md</strong> — Universal/Codex</li>
+        <li><strong>.github/copilot-instructions.md</strong> — GitHub Copilot</li>
+        <li><strong>.windsurfrules</strong> — Windsurf</li>
+      </ul>
+    </div>
+
+    <div class="project-section">
+      <h3>Example output</h3>
+      <div class="placeholder">Example config snippet will be added after the build</div>
+    </div>
+
+  </div>
+
+  <!-- FRICTION LOG TAB -->
+  <div id="friction-log" class="tab-content">
+
+    <p class="friction-log-intro">Raw notes from building this product. Unedited. This is what actually happened.</p>
+
+    <div class="placeholder">
+      Friction log entries will be populated during the build week.<br><br>
+      Format: date/time, what happened, severity, resolution.
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Paul B.</span>
+    <div class="footer-links">
+      <a href="https://twitter.com/paulthebutcher">Twitter</a>
+      <a href="https://linkedin.com/in/paulthebutcher">LinkedIn</a>
+      <a href="mailto:paul@theaiethos.com">Email</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+function showTab(tabName) {
+  // Hide all tabs
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+  // Show selected tab
+  document.querySelector(`.tab[onclick*="${tabName}"]`).classList.add('active');
+  document.getElementById(tabName).classList.add('active');
+}
+</script>
+
+</body>
+</html>

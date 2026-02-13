@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Miner — Toolshed</title>
+<meta name="description" content="Find product ideas hiding in Reddit conversations. Week 1 project — killed.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Signal Miner — Toolshed">
+<meta property="og:description" content="Find product ideas hiding in Reddit conversations. Week 1 project — killed.">
+<meta property="og:image" content="https://theaiethos.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://theaiethos.com/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="site-name">Paul B.</a>
+    <div class="nav-links">
+      <a href="/toolshed" class="active">Toolshed</a>
+      <a href="/log">Log</a>
+      <a href="/about">About</a>
+    </div>
+  </nav>
+
+  <header class="project-page-header">
+    <a href="/toolshed" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 16px; display: inline-block;">← Toolshed</a>
+    <h1>Signal Miner</h1>
+    <p class="project-oneliner">Find product ideas hiding in Reddit conversations.</p>
+    <span class="project-status killed">Killed</span>
+    <div class="project-links">
+      <a href="https://github.com/paulthebutcher/public-feed-signals" target="_blank">GitHub Repo →</a>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('how-it-worked')">How It Worked</div>
+    <div class="tab" onclick="showTab('friction-log')">Friction Log</div>
+  </div>
+
+  <!-- OVERVIEW TAB -->
+  <div id="overview" class="tab-content active">
+
+    <div class="project-section">
+      <h2>What it was</h2>
+      <p>Scraped subreddits, analyzed posts for unmet needs, clustered signals by theme, and surfaced product opportunities with evidence.</p>
+    </div>
+
+    <div class="project-section">
+      <h2>Why it was killed</h2>
+      <div class="placeholder" style="text-align: left; padding: 24px;">
+        <p style="margin-bottom: 16px; color: var(--text-muted);">[Placeholder — I'll write this myself]</p>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">Space for 2-3 paragraphs explaining the decision to kill the project.</p>
+        <p style="color: var(--text-muted);">What went wrong, what was learned, why continuing didn't make sense.</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2>What was learned</h2>
+      <div class="placeholder" style="text-align: left; padding: 24px;">
+        <p style="color: var(--text-muted);">[Placeholder — I'll write this myself]</p>
+        <ul style="margin-top: 16px; color: var(--text-muted); padding-left: 20px;">
+          <li>Bullet point about learning 1</li>
+          <li>Bullet point about learning 2</li>
+          <li>Bullet point about learning 3</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h3>Build context</h3>
+      <p>Week 1. Feb 9–13, 2026.</p>
+    </div>
+
+  </div>
+
+  <!-- HOW IT WORKED TAB -->
+  <div id="how-it-worked" class="tab-content">
+
+    <div class="project-section">
+      <h2>How it worked</h2>
+      <div class="placeholder">
+        Placeholder for step-by-step of what the tool did
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h3>Screenshots</h3>
+      <div class="placeholder">
+        Placeholder for screenshots from the build
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h3>Architecture & technical decisions</h3>
+      <div class="placeholder">
+        Placeholder for technical architecture and key decisions made during the build
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FRICTION LOG TAB -->
+  <div id="friction-log" class="tab-content">
+
+    <p class="friction-log-intro">The complete friction log from Week 1. This is everything that went wrong, got confusing, or surprised me during the build.</p>
+
+    <div class="placeholder">
+      The full friction log will be pasted here.<br><br>
+      Format: date/time entries with what happened, severity, and resolution.
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Paul B.</span>
+    <div class="footer-links">
+      <a href="https://twitter.com/paulthebutcher">Twitter</a>
+      <a href="https://linkedin.com/in/paulthebutcher">LinkedIn</a>
+      <a href="mailto:paul@theaiethos.com">Email</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+function showTab(tabName) {
+  // Hide all tabs
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+  // Show selected tab
+  document.querySelector(`.tab[onclick*="${tabName}"]`).classList.add('active');
+  document.getElementById(tabName).classList.add('active');
+}
+</script>
+
+</body>
+</html>
