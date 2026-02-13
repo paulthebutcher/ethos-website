@@ -37,7 +37,6 @@
     <div class="nav-links">
       <a href="/toolshed">Toolshed</a>
       <a href="/log">Log</a>
-      <a href="/about">About</a>
     </div>
   </nav>
 
@@ -51,21 +50,23 @@
   <section class="timeline-section">
     <div class="timeline">
       <div class="timeline-track"></div>
-      <div class="timeline-week killed">
+      <a href="/toolshed/signal-miner" class="timeline-week killed">
         <span class="week-num">Week 1</span>
         <span class="week-product">Signal Miner</span>
         <span class="week-status">killed</span>
-      </div>
-      <div class="timeline-week current">
+      </a>
+      <a href="/toolshed/harness" class="timeline-week current">
         <span class="week-num">Week 2</span>
         <span class="week-product">Harness</span>
         <span class="week-indicator">now</span>
-      </div>
-      <div class="timeline-week future">
+      </a>
+      <div class="timeline-week future" title="Coming soon">
         <span class="week-num">Week 3</span>
+        <span class="week-product" style="color: var(--text-muted);">TBD</span>
       </div>
-      <div class="timeline-week future">
+      <div class="timeline-week future" title="Coming soon">
         <span class="week-num">Week 4</span>
+        <span class="week-product" style="color: var(--text-muted);">TBD</span>
       </div>
     </div>
   </section>
@@ -87,6 +88,26 @@
       </a>
       <!-- Future program cards go here -->
     </div>
+  </section>
+
+  <!-- Lessons Learned -->
+  <section>
+    <h2 class="section-title">What I've learned</h2>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <div class="lesson-source"><span class="week-badge">Week 1</span> Signal Miner</div>
+        <p class="lesson-content"><strong>Validate the competitive premise first.</strong> Spent 20 hours building a web scraper that produces 9 results in 68 seconds. Asking Claude directly produces 50+ results in 3 seconds. The comparison should have happened on Day 1.</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-source"><span class="week-badge">Week 1</span> Signal Miner</div>
+        <p class="lesson-content"><strong>When your complex solution is worse than "just ask ChatGPT," you're building the wrong thing.</strong> Pivot or stop—don't optimize further.</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-source"><span class="week-badge">Week 1</span> Signal Miner</div>
+        <p class="lesson-content"><strong>Monday planning gaps cost days, not hours.</strong> Missing competitive analysis and TypeScript interface-first guidelines caused 6+ hours of preventable friction.</p>
+      </div>
+    </div>
+    <a href="/toolshed/signal-miner#friction-log" class="lessons-link">See the full friction log →</a>
   </section>
 
   <!-- The Rhythm -->

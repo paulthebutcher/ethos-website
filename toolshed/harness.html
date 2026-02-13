@@ -30,7 +30,6 @@
     <div class="nav-links">
       <a href="/toolshed" class="active">Toolshed</a>
       <a href="/log">Log</a>
-      <a href="/about">About</a>
     </div>
   </nav>
 
@@ -128,7 +127,34 @@
 
     <div class="project-section">
       <h3>Example output</h3>
-      <div class="placeholder">Example config snippet will be added after the build</div>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">A Harness-generated CLAUDE.md for a Next.js e-commerce project:</p>
+      <div class="code-example">
+        <div class="code-header">
+          <span class="code-filename">CLAUDE.md</span>
+          <span class="code-label">Generated</span>
+        </div>
+        <div class="code-content">
+<pre><span class="comment"># Project: ShopFast — Next.js E-commerce</span>
+
+<span class="keyword">## Context</span>
+E-commerce storefront with Stripe payments, Supabase auth.
+Read docs/CONTEXT.md for full background.
+
+<span class="keyword">## Critical Rules</span>
+1. <span class="string">Never modify /lib/stripe.ts without explicit approval</span>
+2. All price calculations must use Decimal.js, not floats
+3. Cart state lives in Zustand store only—no prop drilling
+
+<span class="keyword">## Before You Code</span>
+- Check docs/DATA_MODEL.md for schema before adding fields
+- Check docs/SCOPE.md to confirm feature is in v1
+- Run <span class="string">`pnpm typecheck`</span> before committing
+
+<span class="keyword">## Deferred to Tooling</span>
+Formatting: Prettier · Linting: ESLint · Types: strict mode</pre>
+        </div>
+      </div>
+      <p style="color: var(--text-muted); font-size: 14px; margin-top: 16px;">~50 lines vs. typical 300-line configs. Every instruction is specific to this project.</p>
     </div>
 
   </div>

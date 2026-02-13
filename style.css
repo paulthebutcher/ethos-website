@@ -218,6 +218,17 @@ nav {
 .timeline-week.current::before {
   background: var(--accent);
   border-color: var(--accent);
+  animation: timeline-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(184, 115, 51, 0.4);
+}
+
+@keyframes timeline-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(184, 115, 51, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(184, 115, 51, 0);
+  }
 }
 
 .timeline-week.killed::before {
@@ -268,6 +279,45 @@ nav {
   background: var(--stone-100);
   padding: 2px 8px;
   border-radius: 10px;
+}
+
+/* Timeline hover states */
+.timeline-week {
+  cursor: pointer;
+  transition: transform var(--duration-fast);
+}
+
+.timeline-week:hover {
+  transform: translateY(-2px);
+}
+
+.timeline-week:hover::before {
+  transform: scale(1.1);
+}
+
+.timeline-week.killed:hover .week-product {
+  text-decoration: none;
+  color: var(--text-secondary);
+}
+
+.timeline-week:hover .week-num {
+  color: var(--text-secondary);
+}
+
+/* Timeline link wrapper */
+.timeline-week-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Timeline week as link */
+a.timeline-week {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ========================================
@@ -408,6 +458,200 @@ section {
   color: var(--border-strong);
   font-size: 20px;
   flex-shrink: 0;
+}
+
+/* ========================================
+   LESSONS / INSIGHTS
+   ======================================== */
+
+.lessons-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.lesson-card {
+  padding: 20px 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  transition: all var(--duration-normal) var(--ease);
+}
+
+.lesson-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.lesson-source {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lesson-source .week-badge {
+  background: var(--stone-200);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.lesson-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.lesson-content strong {
+  color: var(--text-primary);
+}
+
+.lessons-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--duration-fast);
+}
+
+.lessons-link:hover {
+  color: var(--accent);
+}
+
+/* ========================================
+   CODE EXAMPLES
+   ======================================== */
+
+.code-example {
+  background: var(--stone-800);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--stone-900);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.code-filename {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--stone-400);
+}
+
+.code-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--copper-400);
+  background: rgba(184, 115, 51, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.code-content {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.code-content pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--stone-200);
+}
+
+.code-content .comment {
+  color: var(--stone-500);
+}
+
+.code-content .keyword {
+  color: var(--copper-400);
+}
+
+.code-content .string {
+  color: var(--green-500);
+}
+
+/* ========================================
+   PROJECT THUMBNAILS
+   ======================================== */
+
+.project-card-thumb {
+  width: 100%;
+  height: 120px;
+  background: var(--stone-100);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card-thumb .thumb-placeholder {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   COLLAPSIBLE SECTIONS
+   ======================================== */
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.collapsible-header:hover h2 {
+  color: var(--accent);
+}
+
+.collapse-icon {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: transform var(--duration-fast);
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content.open {
+  max-height: 5000px;
+}
+
+.collapsible-header.open .collapse-icon {
+  transform: rotate(180deg);
 }
 
 /* ========================================
@@ -558,6 +802,20 @@ footer {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
+}
+
+.project-lesson-teaser {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.project-lesson-teaser strong {
+  color: var(--text-secondary);
+  font-style: normal;
 }
 
 /* ========================================
@@ -716,6 +974,39 @@ footer {
   font-style: italic;
   color: var(--text-muted);
   margin-bottom: 24px;
+}
+
+.friction-stats {
+  display: flex;
+  gap: 24px;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.friction-stat {
+  text-align: center;
+}
+
+.friction-stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.friction-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.friction-stat-value.high-severity {
+  color: var(--red-500);
 }
 
 .friction-entry {

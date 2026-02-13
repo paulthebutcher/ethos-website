@@ -30,7 +30,6 @@
     <div class="nav-links">
       <a href="/toolshed" class="active">Toolshed</a>
       <a href="/log">Log</a>
-      <a href="/about">About</a>
     </div>
   </nav>
 
@@ -55,33 +54,31 @@
 
     <div class="project-section">
       <h2>What it was</h2>
-      <p>Scraped subreddits, analyzed posts for unmet needs, clustered signals by theme, and surfaced product opportunities with evidence.</p>
+      <p>A web scraping pipeline that pulled from 10 sources (HackerNews, Dev.to, IndieHackers, GitHub Issues, Stack Overflow, Product Hunt, YC RFS, Failory, Medium), ran relevance scoring through Claude, extracted pain points, and clustered them by theme. The goal: surface real founder problems with citations, faster than manual Reddit research.</p>
     </div>
 
     <div class="project-section">
       <h2>Why it was killed</h2>
-      <div class="placeholder" style="text-align: left; padding: 24px;">
-        <p style="margin-bottom: 16px; color: var(--text-muted);">[Placeholder — I'll write this myself]</p>
-        <p style="margin-bottom: 16px; color: var(--text-muted);">Space for 2-3 paragraphs explaining the decision to kill the project.</p>
-        <p style="color: var(--text-muted);">What went wrong, what was learned, why continuing didn't make sense.</p>
-      </div>
+      <p>After 20 hours of building, the tool produced 9 pain points in 68 seconds at $0.50 per search. Asking Claude directly produces 50+ pain points in 3 seconds at $0.01. The comparison wasn't close.</p>
+      <p>The fundamental problem: we were building a complex pipeline to extract worse data than Claude already has in its training. Claude has seen millions of Reddit threads, founder blogs, and startup discussions. No amount of web scraping optimization could compete with that.</p>
+      <p>Three days of aggressive optimization—keyword expansion, volume increases, new data sources—moved us from 8 pain points to 9. Meanwhile, half the sources were failing: Medium hit rate limits (429 errors), Quora's React app couldn't be scraped with regex, and Reddit's API policies made it off-limits. We were fighting infrastructure instead of solving problems.</p>
     </div>
 
     <div class="project-section">
       <h2>What was learned</h2>
-      <div class="placeholder" style="text-align: left; padding: 24px;">
-        <p style="color: var(--text-muted);">[Placeholder — I'll write this myself]</p>
-        <ul style="margin-top: 16px; color: var(--text-muted); padding-left: 20px;">
-          <li>Bullet point about learning 1</li>
-          <li>Bullet point about learning 2</li>
-          <li>Bullet point about learning 3</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>Validate the competitive premise first.</strong> The question "Can web scraping beat Claude for founder problems?" should have been asked on Day 1, not discovered on Day 3.</li>
+        <li><strong>When your complex solution is worse than "just ask ChatGPT," you're building the wrong thing.</strong> Pivot or stop—don't optimize further.</li>
+        <li><strong>Modern web apps can't be scraped with regex.</strong> Quora, Medium, and most 2026-era sites use React/SSR. Need headless browsers, which are slow, expensive, and fragile.</li>
+        <li><strong>Optimize the bottleneck, not the source.</strong> Spent 4 hours increasing fetch volume when the real problem was keyword matching filtering out 94% of posts.</li>
+        <li><strong>AI-generated content must match how it's consumed.</strong> Generated "problem phrases" like "can't find product market fit" for substring matching. Posts don't contain exact long phrases—needed short topic keywords instead.</li>
+        <li><strong>Monday planning gaps cost days, not hours.</strong> Missing competitive analysis, TypeScript interface-first guidelines, and multi-file update checklists caused 90+ minutes of preventable friction.</li>
+      </ul>
     </div>
 
     <div class="project-section">
       <h3>Build context</h3>
-      <p>Week 1. Feb 9–13, 2026.</p>
+      <p>Week 1. Feb 9–13, 2026. 20 hours invested. ROI: negative—but the learnings shaped how Week 2 will run.</p>
     </div>
 
   </div>
@@ -90,24 +87,41 @@
   <div id="how-it-worked" class="tab-content">
 
     <div class="project-section">
-      <h2>How it worked</h2>
-      <div class="placeholder">
-        Placeholder for step-by-step of what the tool did
-      </div>
+      <h2>The pipeline</h2>
+      <ol>
+        <li><strong>Keyword expansion</strong> — User enters a topic. Claude generates 10-12 related keywords.</li>
+        <li><strong>Multi-source fetch</strong> — Hit 10 APIs/feeds in parallel: HackerNews, Dev.to, IndieHackers, GitHub Issues, Stack Overflow, Product Hunt, YC RFS, Failory, Medium, (Quora disabled).</li>
+        <li><strong>Relevance scoring</strong> — Claude scores each post 0-100 for problem signal relevance. Posts below threshold filtered out.</li>
+        <li><strong>Pain extraction</strong> — Claude extracts specific pain points from high-relevance posts with supporting quotes.</li>
+        <li><strong>Clustering</strong> — Group similar pain points into themes. Calculate composite scores.</li>
+        <li><strong>Display</strong> — Ranked list with expandable cards, source citations, and score breakdowns.</li>
+      </ol>
     </div>
 
     <div class="project-section">
-      <h3>Screenshots</h3>
-      <div class="placeholder">
-        Placeholder for screenshots from the build
-      </div>
+      <h3>What worked</h3>
+      <ul>
+        <li>TypeScript integration was clean and type-safe (after fixing 15+ initial type errors)</li>
+        <li>JSON parsing became robust after handling all Claude output variations</li>
+        <li>Clustering algorithm grouped pain points effectively</li>
+        <li>Progress indicators showed actual pipeline steps, not fake timers</li>
+      </ul>
     </div>
 
     <div class="project-section">
-      <h3>Architecture & technical decisions</h3>
-      <div class="placeholder">
-        Placeholder for technical architecture and key decisions made during the build
-      </div>
+      <h3>What didn't work</h3>
+      <ul>
+        <li>Wrong data sources — HN/Dev.to are developers discussing code bugs, not founders discussing business problems</li>
+        <li>Keyword matching bottleneck — Substring matching filtered out 94% of posts</li>
+        <li>Rate limits — Medium returned 429 errors when hitting 6 tags in parallel</li>
+        <li>Modern SPAs — Quora's React app couldn't be scraped without headless browser</li>
+        <li>Fundamental ceiling — Can't beat Claude's training data with real-time scraping</li>
+      </ul>
+    </div>
+
+    <div class="project-section">
+      <h3>Stack</h3>
+      <p>Next.js 15, TypeScript, Claude 3.5 Sonnet API, Vercel deployment. 1,103 lines of code across 10 data source integrations.</p>
     </div>
 
   </div>
@@ -115,11 +129,152 @@
   <!-- FRICTION LOG TAB -->
   <div id="friction-log" class="tab-content">
 
-    <p class="friction-log-intro">The complete friction log from Week 1. This is everything that went wrong, got confusing, or surprised me during the build.</p>
+    <p class="friction-log-intro">The complete friction log from Week 1. Everything that went wrong, got confusing, or surprised me during the build. Organized by day, then by issue.</p>
 
-    <div class="placeholder">
-      The full friction log will be pasted here.<br><br>
-      Format: date/time entries with what happened, severity, and resolution.
+    <div class="friction-stats">
+      <div class="friction-stat">
+        <span class="friction-stat-value">20</span>
+        <span class="friction-stat-label">Hours</span>
+      </div>
+      <div class="friction-stat">
+        <span class="friction-stat-value">11</span>
+        <span class="friction-stat-label">Issues</span>
+      </div>
+      <div class="friction-stat">
+        <span class="friction-stat-value high-severity">~10</span>
+        <span class="friction-stat-label">Hours Lost</span>
+      </div>
+      <div class="friction-stat">
+        <span class="friction-stat-value">6</span>
+        <span class="friction-stat-label">Learnings</span>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="project-section collapsible-section">
+      <div class="collapsible-header open" onclick="toggleCollapse(this)">
+        <h2>Day 1: February 10 <span style="font-weight: normal; color: var(--text-muted); font-size: 16px;">— 5 issues, ~3.5 hours lost</span></h2>
+        <span class="collapse-icon">▼</span>
+      </div>
+      <div class="collapsible-content open">
+
+      <div class="friction-entry">
+        <div class="friction-time">Morning — 2 hours lost</div>
+        <div class="friction-content">
+          <strong>Missing competitive analysis.</strong> Built collapsible cards and progress indicators (nice-to-have) for 6 hours before learning the real requirement: "Beat a Claude prompt." Should have been building the AI synthesis layer (must-have). The "beat Claude" requirement came 6 hours into the session.
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Afternoon — 45 min</div>
+        <div class="friction-content">
+          <strong>TypeScript type errors cascade.</strong> Used <code>any</code> types during rapid prototyping. Got 15+ type errors across GitHub, Stack Overflow, Dev.to, IndieHackers, HackerNews integrations. Should have defined interfaces BEFORE implementation.
+        </div>
+        <span class="friction-severity medium">Medium</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Afternoon — 20 min</div>
+        <div class="friction-content">
+          <strong>Multi-file update chaos.</strong> Adding data sources required updating 6 files (types.ts, API route, PainPointCard, page.tsx, sources.ts, validation array). Kept discovering new places that needed changes. Needed a checklist.
+        </div>
+        <span class="friction-severity medium">Medium</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Evening — 20 min</div>
+        <div class="friction-content">
+          <strong>Keyword expansion made results WORSE.</strong> Divided post limit across keywords (30 ÷ 6 = 5 per keyword) instead of multiplying. Got 4 pain points instead of 50. Math should have multiplied coverage, not divided it.
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Evening — 15 min</div>
+        <div class="friction-content">
+          <strong>Overly specific keywords.</strong> Generated multi-word phrases ("can't find product market fit") that never match in substring searches. People don't type exact long phrases. Needed short topic keywords (1-2 words).
+        </div>
+        <span class="friction-severity medium">Medium</span>
+      </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="project-section collapsible-section">
+      <div class="collapsible-header open" onclick="toggleCollapse(this)">
+        <h2>Day 2: February 11 <span style="font-weight: normal; color: var(--text-muted); font-size: 16px;">— 2 issues, ~6 hours lost</span></h2>
+        <span class="collapse-icon">▼</span>
+      </div>
+      <div class="collapsible-content open">
+
+      <div class="friction-entry">
+        <div class="friction-time">All day — 4 hours wasted</div>
+        <div class="friction-content">
+          <strong>Optimized the wrong layer.</strong> Spent 4 hours on aggressive volume optimizations (posts per keyword 30→50, scoring limit 100→200, threshold 40→30, new sources). Result: +1 pain point (8→9). The bottleneck was keyword matching filtering out 94% of posts—not fetch volume.
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Afternoon — 2 hours</div>
+        <div class="friction-content">
+          <strong>Problem phrases vs topic keywords.</strong> Changed keyword expansion to generate "problem phrases" (2-5 words) thinking they'd be more specific. But sources do substring matching—long phrases almost never match. Reverted to short topic keywords (1-2 words).
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="project-section collapsible-section">
+      <div class="collapsible-header open" onclick="toggleCollapse(this)">
+        <h2>Day 3: February 12 <span style="font-weight: normal; color: var(--text-muted); font-size: 16px;">— 4 issues, the kill decision</span></h2>
+        <span class="collapse-icon">▼</span>
+      </div>
+      <div class="collapsible-content open">
+
+      <div class="friction-entry">
+        <div class="friction-time">Morning — 90 min</div>
+        <div class="friction-content">
+          <strong>JSON parsing errors in production.</strong> Claude wrapping JSON in markdown code blocks. Regex was too strict—didn't handle variations in whitespace and language tags. Had to implement robust markdown stripping.
+        </div>
+        <span class="friction-severity medium">Medium</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Midday — 45 min</div>
+        <div class="friction-content">
+          <strong>Medium rate limiting (429).</strong> Hitting 6 Medium tags in parallel triggered rate limits. Had to reduce to 2 tags with 500ms delays between requests. Parallel fetching isn't always better.
+        </div>
+        <span class="friction-severity medium">Medium</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">Afternoon — 2 hours</div>
+        <div class="friction-content">
+          <strong>Quora scraper completely broken.</strong> Implemented HTML regex scraper. Zero results. Modern Quora is a React/Next.js app—questions are in JSON data embedded in script tags, not parseable HTML. Can't scrape modern SPAs with regex.
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+
+      <div class="friction-entry">
+        <div class="friction-time">End of day — The realization</div>
+        <div class="friction-content">
+          <strong>The fundamental ceiling.</strong> After 20 hours: 9 pain points, 68 seconds, $0.50/search. Claude prompt: 50+ pain points, 3 seconds, $0.01. We're building a Rube Goldberg machine to extract worse data than Claude already has in its training. Project killed.
+        </div>
+        <span class="friction-severity high">High</span>
+      </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="project-section">
+      <h2>Summary</h2>
+      <p><strong>Time invested:</strong> 20 hours across 3 days</p>
+      <p><strong>Preventable friction:</strong> ~6 hours (better Monday planning)</p>
+      <p><strong>Biggest single friction:</strong> Not validating competitive premise upfront. Spent 20 hours building something that can't compete with a 3-second Claude prompt.</p>
+      <p><strong>Categories:</strong> 60% from scope gaps (missing competitive analysis, TypeScript guidelines, checklists). 25% from optimizing wrong layer. 15% from unpredictable issues (rate limits, modern SPA architecture).</p>
     </div>
 
   </div>
@@ -144,6 +299,12 @@ function showTab(tabName) {
   // Show selected tab
   document.querySelector(`.tab[onclick*="${tabName}"]`).classList.add('active');
   document.getElementById(tabName).classList.add('active');
+}
+
+function toggleCollapse(header) {
+  header.classList.toggle('open');
+  const content = header.nextElementSibling;
+  content.classList.toggle('open');
 }
 </script>
 

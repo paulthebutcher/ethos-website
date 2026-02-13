@@ -30,30 +30,100 @@
     <div class="nav-links">
       <a href="/toolshed">Toolshed</a>
       <a href="/log" class="active">Log</a>
-      <a href="/about">About</a>
     </div>
   </nav>
 
   <header class="page-header">
     <h1>Log</h1>
-    <p class="log-intro">Working notes from each build week. What happened, what broke, what I'd do differently.</p>
+    <p class="log-intro">Running record of decisions, builds, pivots, and lessons. Newest first.</p>
   </header>
 
   <div class="log-entries">
 
-    <!-- Entry template - newest first -->
+    <!-- Week 1: Signal Miner Killed -->
     <article class="log-entry">
-      <span class="log-date">Feb 14, 2026</span>
-      <h2 class="log-title">Placeholder: First log entry</h2>
+      <span class="log-date">Feb 13, 2026</span>
+      <h2 class="log-title">Week 1: Signal Miner — Killed</h2>
       <div class="log-content">
-        <p>This is where the first log entry will go. Each entry covers a build week — what happened, what broke, what I'd do differently.</p>
-        <p>Entries are short: a date, a title, 2-4 paragraphs, and an optional link to a project page.</p>
-        <p>No categories. No tags. No sidebar. Just a simple stream of working notes.</p>
+        <p>The idea was simple: scrape Reddit and other forums for founder complaints, extract pain points with AI, and surface product opportunities with citations. Better than manually browsing Reddit for 30 hours.</p>
+        <p>After 20 hours of building—10 data sources, keyword expansion, relevance scoring, clustering—the tool produced 9 pain points in 68 seconds at $0.50 per search. Asking Claude directly produces 50+ in 3 seconds at $0.01. The comparison wasn't close.</p>
+        <p>The fundamental mistake: trying to beat Claude at something it already knows. Claude's training data includes millions of Reddit threads, founder blogs, and startup discussions. No amount of real-time scraping could compete with that knowledge.</p>
+        <p>The most expensive lesson: validate the competitive premise before building. "Can web scraping beat Claude for founder problems?" should have been Day 1, not Day 3.</p>
       </div>
-      <a href="/toolshed/harness" class="log-link">View project: Harness →</a>
+      <a href="/toolshed/signal-miner" class="log-link">View project: Signal Miner →</a>
     </article>
 
-    <!-- Add more entries above this line, newest first -->
+    <!-- Toolshed Architecture -->
+    <article class="log-entry">
+      <span class="log-date">Feb 11, 2026</span>
+      <h2 class="log-title">Reframe: The Toolshed</h2>
+      <div class="log-content">
+        <p>Major pivot. From "pre-build intelligence pipeline" to "The Toolshed"—a solo AI product incubator. One product per week, each exploring a new domain. The goal: learn whether building fast and selling cheap can compound into something durable.</p>
+        <p>The system that builds products becomes the product. Each week's build teaches something that makes the next build faster. The infrastructure compounds even when individual products don't.</p>
+      </div>
+    </article>
+
+    <!-- Week 1 Kickoff -->
+    <article class="log-entry">
+      <span class="log-date">Feb 10, 2026</span>
+      <h2 class="log-title">Week 1 Kickoff: Reddit Problem Signal Miner</h2>
+      <div class="log-content">
+        <p>First weekly build begins. Testing whether AI can extract actionable problem signals from startup communities. Validates the "problem discovery" piece—can we automate the manual Reddit research that founders do?</p>
+        <p>Target: ship something usable by Friday.</p>
+      </div>
+    </article>
+
+    <!-- Research Pivot -->
+    <article class="log-entry">
+      <span class="log-date">Feb 9, 2026</span>
+      <h2 class="log-title">Research Day: Evidence Layers Are Commodity</h2>
+      <div class="log-content">
+        <p>Scrapped evidence-scoring-layer approach. Deep dive into academic claim decomposition pipelines (FActScore, VeriScore, SAFE, DecMetrics). Validated that decomposition prompt quality is the bottleneck, not scoring algorithms.</p>
+        <p>Competitive landscape: Elicit, Scite, Consensus all academic-focused. Nobody building idea → build-spec pipeline. The evidence layer is commodity; structuring evidence into actionable build plans is the gap.</p>
+        <p>Cross-engine corroboration is a thin moat. The real bottleneck is idea → spec, not idea → evidence. Reframed as pre-build intelligence system.</p>
+      </div>
+    </article>
+
+    <!-- Launchpad -->
+    <article class="log-entry">
+      <span class="log-date">Feb 8, 2026</span>
+      <h2 class="log-title">Launchpad UI Complete</h2>
+      <div class="log-content">
+        <p>Built full Launchpad UI at launchpad.theaiethos.com with dark theme. AI proposal generation: describe idea → get full app config. Proposal editor with tabs, build progress page with SSE streaming.</p>
+        <p>Fixed Clerk middleware issues, restructured CSS to app-level styling. The "describe and build" flow works—need to validate whether the generated specs are actually useful.</p>
+      </div>
+    </article>
+
+    <!-- Guildry Phase 1 -->
+    <article class="log-entry">
+      <span class="log-date">Feb 7, 2026</span>
+      <h2 class="log-title">Guildry Phase 1 Complete</h2>
+      <div class="log-content">
+        <p>Built Blueprint (conversational project scoping), Bench (talent network), Retro (retrospectives). Full MVP loop: Scope → Staff → Deliver → Learn → Improve.</p>
+        <p>All three modules in ~3 hours across 2 sessions. Validates 1 MVP/week pace is achievable with AI-assisted development.</p>
+      </div>
+    </article>
+
+    <!-- Site Launch -->
+    <article class="log-entry">
+      <span class="log-date">Feb 6, 2026</span>
+      <h2 class="log-title">Site Launch + Guildry Phase 0</h2>
+      <div class="log-content">
+        <p>Launched standalone ethos site. Built /projects page with status badges, /log page for ongoing documentation. Established weekly log cadence.</p>
+        <p>Guildry Phase 0 complete: Clerk auth, Supabase with RLS, Claude API integration. AI creates clients via natural conversation. Pivoted from 17-PR waterfall to discovery-first approach—let AI conversations reveal what data matters.</p>
+        <p>Key learning: AI-assisted development is 10-20x faster than traditional estimates. Phase 0 took half a day vs 3 week estimate.</p>
+      </div>
+    </article>
+
+    <!-- Context -->
+    <article class="log-entry">
+      <span class="log-date">Feb 3, 2026</span>
+      <h2 class="log-title">Context: Previous Iterations</h2>
+      <div class="log-content">
+        <p>Previous iteration: Plinth as strategic research tool for consultants. Positioning defined but product scope kept expanding. Five build attempts with mixed results—consistent pattern of spec quality being the limiting factor.</p>
+        <p>The lesson that keeps repeating: better specs lead to better builds. The question is how to get better specs faster.</p>
+      </div>
+    </article>
 
   </div>
 
